@@ -1,9 +1,9 @@
-import { ProjectCard } from "./project-card";
-import { projects } from "@/data/projects";
+import { ProjectCard } from './project-card'
+import { projects } from '@/data/projects'
 
 /**
  * ProjectList Component
- * 
+ *
  * Renders a grid of project cards.
  * Polished:
  * - High-impact grid layout (2 columns for desktop).
@@ -11,29 +11,37 @@ import { projects } from "@/data/projects";
  * - Proper visual rhythm (py-24).
  */
 export function ProjectList() {
-  const hasProjects = projects && projects.length > 0;
+  const hasProjects = projects && projects.length > 0
 
   return (
-    <section className="py-24 md:py-32 w-full max-w-6xl mx-auto px-6" aria-labelledby="projects-heading">
-      <div className="flex flex-col gap-6 mb-16 text-center md:text-left">
-        <h2 id="projects-heading" className="text-4xl font-bold tracking-tightest sm:text-5xl">
-          Meus Projetos
-        </h2>
-        <div className="h-1.5 w-20 bg-primary rounded-full hidden md:block" />
-        <p className="text-muted-foreground text-lg sm:text-xl max-w-[50ch] leading-relaxed">
+    <section
+      className="mx-auto w-full max-w-[1600px] px-4 py-18 sm:px-6 sm:py-24 lg:px-10 lg:py-28"
+      aria-labelledby="projects-heading"
+    >
+      <div className="mb-12 flex flex-col gap-5 text-left sm:mb-14 lg:mb-16 xl:grid xl:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.55fr)] xl:items-end xl:gap-10">
+        <div className="space-y-5">
+          <h2
+            id="projects-heading"
+            className="text-3xl font-bold tracking-tightest sm:text-4xl lg:text-5xl xl:text-6xl"
+          >
+            Meus Projetos
+          </h2>
+          <div className="h-1.5 w-16 rounded-full bg-primary sm:w-20" />
+        </div>
+        <p className="max-w-[52ch] text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
           Confira alguns dos projetos em que estive trabalhando recentemente.
         </p>
       </div>
 
       {hasProjects ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both">
+        <div className="grid grid-cols-1 gap-6 animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       ) : (
-        <div className="py-24 text-center border-2 border-dashed rounded-3xl bg-muted/20 border-border/60">
-          <div className="max-w-[400px] mx-auto space-y-4">
+        <div className="rounded-3xl border-2 border-dashed border-border/60 bg-muted/20 py-18 text-center sm:py-24">
+          <div className="mx-auto max-w-[400px] space-y-4 px-6">
             <p className="text-xl font-bold text-muted-foreground tracking-tightest">
               Nenhum projeto encontrado.
             </p>
@@ -44,5 +52,5 @@ export function ProjectList() {
         </div>
       )}
     </section>
-  );
+  )
 }

@@ -1,9 +1,9 @@
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tags: string[];
-  repoUrl?: string;
-  liveUrl?: string;
+  id: string
+  title: string
+  description: string
+  imageUrl: string
+  tags: string[]
+  repoUrl?: string
+  liveUrl?: string
 }

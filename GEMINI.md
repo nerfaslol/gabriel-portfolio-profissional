@@ -20,7 +20,7 @@ Este projeto é um portfólio frontend moderno e refinado, construído com **Rea
 
 ## Architecture and Code Quality
 
-- **SOLID & Clean Code**: 
+- **SOLID & Clean Code**:
   - Pasta `src` estritamente organizada.
   - Separação clara entre Dados (`src/data`), Tipos (`src/types`) e UI (`src/components`).
   - Uso de componentes com responsabilidade única e semântica HTML (`nav`, `main`, `footer`, `section`).
@@ -48,4 +48,5 @@ Este projeto é um portfólio frontend moderno e refinado, construído com **Rea
 - **Custom Skill**: Implementamos o comando `/sincronizar` para manter este documento e o aprendizado da IA sempre atualizados com o estado do repositório.
 
 ---
-*Atualizado automaticamente via comando `/sincronizar`*
+
+_Atualizado automaticamente via comando `/sincronizar`_
