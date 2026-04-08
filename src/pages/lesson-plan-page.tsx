@@ -1,11 +1,18 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
 import { LessonPlanCard } from '@/components/portfolio/lesson-plan-card'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { lessonPlan } from '@/data/lesson-plan'
+import { lessonPlanPresencial, lessonPlanDistancia } from '@/data/lesson-plan'
+import type { LessonModality } from '@/types/lesson-plan'
 
 export function LessonPlanPage() {
+  const [modality, setModality] = useState<LessonModality>('presencial')
+
+  const plan =
+    modality === 'presencial' ? lessonPlanPresencial : lessonPlanDistancia
+
   return (
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
       {/* Header simples com voltar */}
@@ -23,7 +30,11 @@ export function LessonPlanPage() {
       </header>
 
       <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
-        <LessonPlanCard plan={lessonPlan} />
+        <LessonPlanCard
+          plan={plan}
+          modality={modality}
+          onModalityChange={setModality}
+        />
       </main>
 
       <footer className="mt-10 border-t border-border/80 py-8">

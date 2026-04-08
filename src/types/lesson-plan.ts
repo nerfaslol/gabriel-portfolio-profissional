@@ -44,8 +44,11 @@ export interface LessonObjective {
   relatedStepIndex?: number
 }
 
+export type LessonModality = 'presencial' | 'distancia'
+
 export interface LessonPlan {
   id: string
+  modality: LessonModality
   title: string
   subtitle: string
   targetAudience: string

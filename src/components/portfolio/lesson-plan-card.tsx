@@ -9,9 +9,11 @@ import {
   ExternalLink,
   HelpCircle,
   ImageOff,
+  Laptop,
   Lightbulb,
   MessageCircle,
   Monitor,
+  School,
   Sparkles,
   Target,
   Terminal,
@@ -23,12 +25,14 @@ import {
 } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 
-import type { LessonPlan, LessonImage } from '@/types/lesson-plan'
+import type { LessonPlan, LessonImage, LessonModality } from '@/types/lesson-plan'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface LessonPlanCardProps {
   plan: LessonPlan
+  modality: LessonModality
+  onModalityChange: (modality: LessonModality) => void
 }
 
 /* ─── Image placeholder component ──────────────────────────────────── */
@@ -115,7 +119,7 @@ function DifficultyBadge({ level }: { level: string }) {
 }
 
 /* ─── Main component ───────────────────────────────────────────────── */
-export function LessonPlanCard({ plan }: LessonPlanCardProps) {
+export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanCardProps) {
   const [imageError, setImageError] = useState(false)
 
   return (
@@ -162,6 +166,36 @@ export function LessonPlanCard({ plan }: LessonPlanCardProps) {
           <p className="text-base font-semibold text-muted-foreground sm:text-lg">
             {plan.subtitle}
           </p>
+
+          {/* Modality toggle */}
+          <div className="flex items-center gap-1 rounded-full border border-border/70 bg-muted/30 p-1 w-fit">
+            <button
+              type="button"
+              onClick={() => onModalityChange('presencial')}
+              className={cn(
+                'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200',
+                modality === 'presencial'
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              <School className="size-3" />
+              Presencial
+            </button>
+            <button
+              type="button"
+              onClick={() => onModalityChange('distancia')}
+              className={cn(
+                'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200',
+                modality === 'distancia'
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              <Laptop className="size-3" />
+              À Distância
+            </button>
+          </div>
 
           {/* Meta chips */}
           <div className="flex flex-wrap gap-2 pt-1">
