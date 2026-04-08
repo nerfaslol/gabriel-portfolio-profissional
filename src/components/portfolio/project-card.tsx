@@ -24,7 +24,7 @@ interface ProjectCardProps {
  */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="group flex h-full flex-col overflow-hidden border-border/40 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-primary/20">
+    <Card className="group flex h-full flex-col overflow-hidden border-border/70 bg-background shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-primary/12">
       {/* Project Image Placeholder/Thumbnail */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted/50 sm:aspect-video">
         <img
@@ -41,19 +41,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Project Content */}
-      <CardHeader className="space-y-2 p-5 pb-4 sm:p-6 sm:pb-4 lg:p-7 lg:pb-4">
+      <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
         <CardTitle
-          className="line-clamp-2 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl xl:text-[1.35rem]"
+          className="line-clamp-2 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl"
           title={project.title}
         >
           {project.title}
         </CardTitle>
-        <CardDescription className="min-h-[4.5rem] text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem] xl:min-h-[4.75rem]">
+        <CardDescription className="min-h-[4.3rem] text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
           {project.description || 'Sem descrição disponível para este projeto.'}
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="flex-grow px-5 pb-5 pt-0 sm:px-6 sm:pb-6 lg:px-7 lg:pb-7">
+      <CardContent className="flex-grow px-5 pb-5 pt-0 sm:px-6 sm:pb-6 lg:px-7 lg:pb-6">
         <div
           className="flex flex-wrap gap-2.5"
           aria-label="Tecnologias utilizadas"
@@ -62,7 +62,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             project.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex min-h-8 items-center rounded-full border border-border/50 bg-secondary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-secondary-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground sm:min-h-9 sm:text-[11px]"
+                className="inline-flex min-h-8 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground transition-all hover:border-primary/30 hover:text-foreground sm:min-h-9 sm:text-[11px]"
               >
                 {tag}
               </span>
@@ -99,7 +99,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <Button
             variant="outline"
             size="lg"
-            className="min-h-11 w-full flex-1 border-border/60 font-semibold transition-all hover:bg-accent/50 active:scale-95"
+            className="min-h-11 w-full flex-1 border-border/70 font-semibold transition-all hover:bg-accent/50 active:scale-95"
             render={
               <a
                 href={project.repoUrl}
