@@ -1,4 +1,5 @@
 import type { LessonPlan } from '@/types/lesson-plan'
+import lessonPlanBanner from '@/assets/lesson-plan-banner.png'
 
 export const lessonPlan: LessonPlan = {
   id: 'web-design-ia',
@@ -9,7 +10,7 @@ export const lessonPlan: LessonPlan = {
   description:
     'Uma aula introdutória que ensina os fundamentos de HTML, CSS e JavaScript enquanto usa ferramentas de inteligência artificial — como Gemini e ChatGPT — como assistentes de aprendizado. O objetivo não é memorizar código, mas entender como pensar em desenvolvimento e como usar IA para acelerar e melhorar o que você cria.',
   tags: ['HTML', 'CSS', 'JavaScript', 'IA', 'Gemini', 'ChatGPT', 'Web Design'],
-  imageUrl: '',
+  imageUrl: lessonPlanBanner,
 
   prerequisites: [
     'Computador com Windows, macOS ou Linux',
