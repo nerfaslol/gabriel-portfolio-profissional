@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ImageOff, Sparkles } from 'lucide-react'
+import { ImageOff } from 'lucide-react'
 import type { Project } from '@/types/project'
 import {
   Card,
@@ -55,12 +55,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           >
             {project.title}
           </CardTitle>
-          {project.aiAssisted && (
-            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/8 px-2 py-0.5 text-[10px] font-bold text-primary/70">
-              <Sparkles className="size-2.5" />
-              IA
-            </span>
-          )}
         </div>
         <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
           {project.description || 'Sem descrição disponível para este projeto.'}

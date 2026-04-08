@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Sparkles } from 'lucide-react'
 
 import { ProjectCard } from './project-card'
 import { projects } from '@/data/projects'
@@ -43,55 +42,58 @@ export function ProjectList() {
         <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
           {/* Card do projeto principal — plano de aula */}
           <Card className="group flex h-full flex-col overflow-hidden border-primary/30 bg-background shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg lg:col-span-2">
-            <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
-              <div className="flex items-start justify-between gap-2">
-                <CardTitle className="text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
-                  {lessonPlan.title}
-                </CardTitle>
-                <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
-                  <Sparkles className="size-2.5" />
-                  Principal
-                </span>
-              </div>
-              <p className="text-xs font-semibold text-muted-foreground/70">
-                {lessonPlan.targetAudience} · {lessonPlan.duration}
-              </p>
-              <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-                {lessonPlan.description}
-              </CardDescription>
-            </CardHeader>
+            <div className="flex flex-col sm:flex-row sm:items-stretch">
+              {/* Texto */}
+              <div className="flex flex-1 flex-col">
+                <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
+                  <CardTitle className="text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
+                    {lessonPlan.title}
+                  </CardTitle>
+                  <p className="text-xs font-semibold text-muted-foreground/70">
+                    {lessonPlan.targetAudience} · {lessonPlan.duration}
+                  </p>
+                  <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                    {lessonPlan.description}
+                  </CardDescription>
+                </CardHeader>
 
-            <CardContent className="flex-1 p-5 pt-2 sm:p-6 sm:pt-2 lg:p-7 lg:pt-2">
-              <div
-                className="flex flex-wrap gap-2"
-                aria-label="Tecnologias utilizadas"
-              >
-                {lessonPlan.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex min-h-10 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]"
+                <CardContent className="flex-1 p-5 pt-2 sm:p-6 sm:pt-2 lg:p-7 lg:pt-2">
+                  <div className="flex flex-wrap gap-2" aria-label="Tecnologias utilizadas">
+                    {lessonPlan.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex min-h-10 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+
+                <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="min-h-10 gap-2"
+                    render={<Link to="/aula" aria-label="Ver plano de aula completo" />}
                   >
-                    {tag}
-                  </span>
-                ))}
+                    Ver Plano de Aula
+                  </Button>
+                </CardFooter>
               </div>
-            </CardContent>
 
-            <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
-              <Button
-                variant="default"
-                size="sm"
-                className="min-h-10 gap-2"
-                render={
-                  <Link
-                    to="/aula"
-                    aria-label="Ver plano de aula completo"
+              {/* Imagem à direita */}
+              {lessonPlan.imageUrl && (
+                <div className="flex items-center justify-center border-t border-border/60 bg-muted/20 p-4 sm:w-64 sm:border-l sm:border-t-0 lg:w-80 xl:w-96">
+                  <img
+                    src={lessonPlan.imageUrl}
+                    alt={`Imagem do projeto: ${lessonPlan.title}`}
+                    className="h-auto w-full object-contain"
+                    loading="lazy"
                   />
-                }
-              >
-                Ver Plano de Aula
-              </Button>
-            </CardFooter>
+                </div>
+              )}
+            </div>
           </Card>
 
           {/* Demais projetos */}
