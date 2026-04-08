@@ -1,8 +1,19 @@
+import { Link } from 'react-router-dom'
+import { Sparkles } from 'lucide-react'
+
 import { ProjectCard } from './project-card'
-import { LessonPlanCard } from './lesson-plan-card'
 import { projects } from '@/data/projects'
 import { lessonPlan } from '@/data/lesson-plan'
 import { FadeInView } from '@/components/fade-in-view'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 export function ProjectList() {
   const hasProjects = projects && projects.length > 0
@@ -14,7 +25,7 @@ export function ProjectList() {
     >
       {/* Cabeçalho da seção */}
       <div className="mb-12 flex flex-col gap-5 text-left sm:mb-14 lg:mb-16 xl:grid xl:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.55fr)] xl:items-end xl:gap-10">
-        <div className="space-y-5">
+        <div>
           <h2
             id="projects-heading"
             className="text-3xl font-bold tracking-tightest sm:text-4xl lg:text-5xl xl:text-6xl"
@@ -27,29 +38,72 @@ export function ProjectList() {
         </p>
       </div>
 
-      {/* Projeto principal — plano de aula */}
-      <FadeInView className="mb-12 sm:mb-14 lg:mb-16">
-        <LessonPlanCard plan={lessonPlan} />
-      </FadeInView>
+      {/* Grid unificado: projeto principal primeiro, depois os demais */}
+      <FadeInView>
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
+          {/* Card do projeto principal — plano de aula */}
+          <Card className="group flex h-full flex-col overflow-hidden border-primary/30 bg-background shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg lg:col-span-2">
+            <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
+              <div className="flex items-start justify-between gap-2">
+                <CardTitle className="text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
+                  {lessonPlan.title}
+                </CardTitle>
+                <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+                  <Sparkles className="size-2.5" />
+                  Principal
+                </span>
+              </div>
+              <p className="text-xs font-semibold text-muted-foreground/70">
+                {lessonPlan.targetAudience} · {lessonPlan.duration}
+              </p>
+              <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                {lessonPlan.description}
+              </CardDescription>
+            </CardHeader>
 
-      {/* Separador */}
-      <div className="mb-8 sm:mb-10">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-muted-foreground sm:text-xs">
-          Outros projetos
-        </p>
-      </div>
+            <CardContent className="flex-1 p-5 pt-2 sm:p-6 sm:pt-2 lg:p-7 lg:pt-2">
+              <div
+                className="flex flex-wrap gap-2"
+                aria-label="Tecnologias utilizadas"
+              >
+                {lessonPlan.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex min-h-10 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
 
-      {/* Grid de projetos simples */}
-      {hasProjects ? (
-        <FadeInView delay="delay-100">
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
-            {projects.map((project) => (
+            <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
+              <Button
+                variant="default"
+                size="sm"
+                className="min-h-10 gap-2"
+                render={
+                  <Link
+                    to="/aula"
+                    aria-label="Ver plano de aula completo"
+                  />
+                }
+              >
+                Ver Plano de Aula
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Demais projetos */}
+          {hasProjects &&
+            projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
-        </FadeInView>
-      ) : (
-        <div className="rounded-3xl border-2 border-dashed border-border/60 bg-muted/20 py-18 text-center sm:py-24">
+        </div>
+      </FadeInView>
+
+      {!hasProjects && (
+        <div className="mt-12 rounded-3xl border-2 border-dashed border-border/60 bg-muted/20 py-18 text-center sm:py-24">
           <div className="mx-auto max-w-[400px] space-y-4 px-6">
             <p className="text-xl font-bold tracking-tightest text-muted-foreground">
               Nenhum projeto encontrado.
