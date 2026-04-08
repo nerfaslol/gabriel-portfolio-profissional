@@ -1,37 +1,51 @@
 # Project Overview
 
-This project is a modern frontend web application built with React 19, TypeScript, and Vite. It serves as a pre-configured starter template or portfolio project ("Projeto inicial pronto"), incorporating robust styling and UI component libraries.
+Este projeto é um portfólio frontend moderno e refinado, construído com **React 19**, **TypeScript** e **Vite**. Ele foi desenvolvido sob os pilares de **Clean Code**, **SOLID** e resiliência de interface, servindo como uma vitrine profissional para o Gabriel.
 
 ## Core Technologies
 
-- **Framework:** React 19
-- **Language:** TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS v4, `tailwind-merge`, `clsx`, `tw-animate-css`
-- **UI Components:** shadcn/ui, `@base-ui/react`, `lucide-react` for icons
-- **Fonts:** Geist (`@fontsource-variable/geist`)
-- **Linting:** ESLint (with TypeScript and React Hooks plugins)
+- **Framework:** React 19 (com suporte nativo a modern features)
+- **Language:** TypeScript (Strict Typing)
+- **Build Tool:** Vite v8
+- **Styling:** Tailwind CSS v4 + Tweakcn (Vercel Theme Tokens)
+- **UI Components:** shadcn/ui (base-ui/react)
+- **Typography:** Geist (font-sans) com escala modular e hierarquia forte.
+- **Icons:** Lucide-react
+
+## Design Context (from .impeccable.md)
+
+- **Brand Personality**: Elegante, Refinado, Simples.
+- **Emotional Goals**: Clareza e Confiança.
+- **Aesthetic Direction**: Minimalismo moderno estilo Vercel/Linear, com uso inteligente de espaços em branco e micro-interações sutis.
 
 ## Architecture and Code Quality
 
-- **SOLID & Clean Code:** The `src` directory must strictly adhere to SOLID principles and Clean Code practices. 
-  - Functions and components should have a single responsibility.
-  - Keep code modular, readable, and maintainable.
-  - Avoid large, monolithic files; break down logic into smaller, reusable pieces.
-  - Use meaningful naming conventions for variables, functions, and files.
+- **SOLID & Clean Code**: 
+  - Pasta `src` estritamente organizada.
+  - Separação clara entre Dados (`src/data`), Tipos (`src/types`) e UI (`src/components`).
+  - Uso de componentes com responsabilidade única e semântica HTML (`nav`, `main`, `footer`, `section`).
+- **Resiliência (Hardening)**:
+  - Tratamento de overflow (`line-clamp`, `truncate`).
+  - Fallback para imagens falhas.
+  - Estados vazios (Empty States) tratados.
+  - Acessibilidade (ARIA labels e navegação por teclado).
+- **Tipografia (Typeset)**:
+  - Escala fluida para títulos grandes (`8xl`).
+  - Limite de largura de linha (`max-width: 60ch`) para legibilidade.
+  - Contraste de peso (`extrabold` vs `medium`).
 
 ## Building and Running
 
-The project utilizes standard npm scripts for its development lifecycle. Use your preferred package manager (e.g., `npm`, `pnpm`, or `yarn`) to execute these commands:
+- **Development:** `npm run dev`
+- **Build:** `npm run build` (TypeScript + Vite)
+- **Lint:** `npm run lint`
 
-- **Development Server:** `npm run dev` (starts the Vite dev server with Hot Module Replacement).
-- **Production Build:** `npm run build` (runs the TypeScript compiler `tsc -b` followed by `vite build`).
-- **Preview Production:** `npm run preview` (locally previews the production build).
-- **Linting:** `npm run lint` (runs ESLint across the project).
+## Recent Learnings & Session Decisions
 
-## Development Conventions
+- **Theme Tokens**: O projeto abandonou cores hardcoded em favor de tokens `oklch` (Tweakcn Vercel Theme).
+- **shadcn/ui update**: A versão mais recente utiliza `@base-ui/react` e a propriedade `render={<... />}` em vez de `asChild` para maior compatibilidade.
+- **Path Aliasing**: Uso obrigatório do prefixo `@/` para `src/`.
+- **Custom Skill**: Implementamos o comando `/sincronizar` para manter este documento e o aprendizado da IA sempre atualizados com o estado do repositório.
 
-- **Path Aliasing:** The project is configured with a path alias. The `@/` prefix maps to the `./src/` directory (e.g., `import { Button } from '@/components/ui/button'`).
-- **Styling Architecture:** The project uses a utility-first CSS approach with Tailwind v4. UI components are built using shadcn/ui patterns, likely leveraging `class-variance-authority` for managing component variants.
-- **Routing/Base URL:** The `vite.config.ts` is configured to use `/gabriel-portfolio-profissional/` as the base URL in production environments, and `/` during development. Keep this in mind when dealing with static assets or routing.
-- **Strict Typing:** The project uses TypeScript. Ensure that new code is strongly typed and passes the `npm run build` step without compilation errors.
+---
+*Atualizado automaticamente via comando `/sincronizar`*
