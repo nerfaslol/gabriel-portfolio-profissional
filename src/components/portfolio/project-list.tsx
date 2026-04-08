@@ -42,9 +42,11 @@ export function ProjectList() {
         <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
           {/* Card do projeto principal — plano de aula */}
           <Card className="group flex h-full flex-col overflow-hidden border-primary/30 bg-background shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg lg:col-span-2">
-            <div className="flex flex-col sm:flex-row sm:items-stretch">
+
+            {/* Linha de cima: texto + imagem lado a lado */}
+            <div className="flex flex-col sm:flex-row">
               {/* Texto */}
-              <div className="flex flex-1 flex-col">
+              <div className="flex-1">
                 <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
                   <CardTitle className="text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
                     {lessonPlan.title}
@@ -56,8 +58,7 @@ export function ProjectList() {
                     {lessonPlan.description}
                   </CardDescription>
                 </CardHeader>
-
-                <CardContent className="flex-1 p-5 pt-2 sm:p-6 sm:pt-2 lg:p-7 lg:pt-2">
+                <CardContent className="p-5 pt-2 sm:p-6 sm:pt-2 lg:p-7 lg:pt-2">
                   <div className="flex flex-wrap gap-2" aria-label="Tecnologias utilizadas">
                     {lessonPlan.tags.map((tag) => (
                       <span
@@ -69,20 +70,9 @@ export function ProjectList() {
                     ))}
                   </div>
                 </CardContent>
-
-                <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="min-h-10 gap-2 bg-transparent"
-                    render={<Link to="/aula" aria-label="Ver plano de aula completo" />}
-                  >
-                    Ver Plano de Aula
-                  </Button>
-                </CardFooter>
               </div>
 
-              {/* Imagem à direita */}
+              {/* Imagem à direita — alinhada com o texto */}
               {lessonPlan.imageUrl && (
                 <div className="shrink-0 self-center p-4 sm:w-56 sm:p-5 lg:w-72">
                   <img
@@ -94,6 +84,18 @@ export function ProjectList() {
                 </div>
               )}
             </div>
+
+            {/* Botão em baixo, largura total */}
+            <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
+              <Button
+                variant="outline"
+                size="sm"
+                className="min-h-10 bg-transparent"
+                render={<Link to="/aula" aria-label="Ver plano de aula completo" />}
+              >
+                Ver Plano de Aula
+              </Button>
+            </CardFooter>
           </Card>
 
           {/* Demais projetos */}
