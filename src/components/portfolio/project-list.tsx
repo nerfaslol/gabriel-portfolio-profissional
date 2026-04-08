@@ -72,9 +72,9 @@ export function ProjectList() {
 
                 <CardFooter className="p-5 pt-3 sm:p-6 sm:pt-3 lg:p-7 lg:pt-3">
                   <Button
-                    variant="default"
+                    variant="outline"
                     size="sm"
-                    className="min-h-10 gap-2"
+                    className="min-h-10 gap-2 bg-transparent"
                     render={<Link to="/aula" aria-label="Ver plano de aula completo" />}
                   >
                     Ver Plano de Aula
@@ -84,11 +84,11 @@ export function ProjectList() {
 
               {/* Imagem à direita */}
               {lessonPlan.imageUrl && (
-                <div className="flex items-center justify-center border-t border-border/60 bg-muted/20 p-4 sm:w-64 sm:border-l sm:border-t-0 lg:w-80 xl:w-96">
+                <div className="flex shrink-0 items-center justify-center p-5 sm:w-56 sm:p-4 lg:w-72">
                   <img
                     src={lessonPlan.imageUrl}
                     alt={`Imagem do projeto: ${lessonPlan.title}`}
-                    className="h-auto w-full object-contain"
+                    className="h-auto w-full rounded-xl object-contain"
                     loading="lazy"
                   />
                 </div>
