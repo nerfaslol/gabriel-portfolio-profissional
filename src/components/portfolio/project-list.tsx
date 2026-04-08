@@ -1,16 +1,9 @@
 import { ProjectCard } from './project-card'
+import { LessonPlanCard } from './lesson-plan-card'
 import { projects } from '@/data/projects'
+import { lessonPlan } from '@/data/lesson-plan'
 import { FadeInView } from '@/components/fade-in-view'
 
-/**
- * ProjectList Component
- *
- * Renders a grid of project cards.
- * Polished:
- * - High-impact grid layout (2 columns for desktop).
- * - Sophisticated empty state.
- * - Proper visual rhythm (py-24).
- */
 export function ProjectList() {
   const hasProjects = projects && projects.length > 0
 
@@ -19,6 +12,7 @@ export function ProjectList() {
       className="mx-auto w-full max-w-[1600px] px-4 py-18 sm:px-6 sm:py-24 lg:px-10 lg:py-28"
       aria-labelledby="projects-heading"
     >
+      {/* Cabeçalho da seção */}
       <div className="mb-12 flex flex-col gap-5 text-left sm:mb-14 lg:mb-16 xl:grid xl:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.55fr)] xl:items-end xl:gap-10">
         <div className="space-y-5">
           <h2
@@ -33,8 +27,21 @@ export function ProjectList() {
         </p>
       </div>
 
+      {/* Projeto principal — plano de aula */}
+      <FadeInView className="mb-12 sm:mb-14 lg:mb-16">
+        <LessonPlanCard plan={lessonPlan} />
+      </FadeInView>
+
+      {/* Separador */}
+      <div className="mb-8 sm:mb-10">
+        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-muted-foreground sm:text-xs">
+          Outros projetos
+        </p>
+      </div>
+
+      {/* Grid de projetos simples */}
       {hasProjects ? (
-        <FadeInView>
+        <FadeInView delay="delay-100">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
@@ -44,10 +51,10 @@ export function ProjectList() {
       ) : (
         <div className="rounded-3xl border-2 border-dashed border-border/60 bg-muted/20 py-18 text-center sm:py-24">
           <div className="mx-auto max-w-[400px] space-y-4 px-6">
-            <p className="text-xl font-bold text-muted-foreground tracking-tightest">
+            <p className="text-xl font-bold tracking-tightest text-muted-foreground">
               Nenhum projeto encontrado.
             </p>
-            <p className="text-sm text-muted-foreground/60 leading-relaxed font-medium">
+            <p className="text-sm font-medium leading-relaxed text-muted-foreground/60">
               Fique atento! Novas atualizações e projetos incríveis em breve.
             </p>
           </div>

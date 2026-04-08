@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ImageOff } from 'lucide-react'
+import { ImageOff, Sparkles } from 'lucide-react'
 import type { Project } from '@/types/project'
 import {
   Card,
@@ -48,12 +48,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Project Content */}
       <CardHeader className="space-y-2 p-5 pb-3 sm:p-6 sm:pb-3 lg:p-7 lg:pb-3">
-        <CardTitle
-          className="line-clamp-2 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl"
-          title={project.title}
-        >
-          {project.title}
-        </CardTitle>
+        <div className="flex items-start justify-between gap-2">
+          <CardTitle
+            className="line-clamp-2 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl"
+            title={project.title}
+          >
+            {project.title}
+          </CardTitle>
+          {project.aiAssisted && (
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/8 px-2 py-0.5 text-[10px] font-bold text-primary/70">
+              <Sparkles className="size-2.5" />
+              IA
+            </span>
+          )}
+        </div>
         <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
           {project.description || 'Sem descrição disponível para este projeto.'}
         </CardDescription>

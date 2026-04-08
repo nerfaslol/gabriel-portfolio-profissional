@@ -6,4 +6,5 @@ export interface Project {
   tags: string[]
   repoUrl?: string
   liveUrl?: string
+  aiAssisted?: boolean
 }
