@@ -7,6 +7,7 @@ import {
   Lightbulb,
   Monitor,
   Sparkles,
+  Terminal,
   Users,
 } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
@@ -96,57 +97,91 @@ export function LessonPlanCard({ plan }: LessonPlanCardProps) {
           </div>
         </div>
 
-        {/* Two-column grid: Prerequisites + Setup */}
-        <div className="mb-8 grid gap-6 md:grid-cols-2 md:gap-8">
-          {/* Pré-requisitos */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
-              Pré-requisitos
-            </h4>
-            <ul className="space-y-2">
-              {plan.prerequisites.map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                  <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[9px] font-bold text-primary">
-                    {i + 1}
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Pré-requisitos */}
+        <div className="mb-8 space-y-3">
+          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+            Pré-requisitos
+          </h4>
+          <ul className="space-y-2">
+            {plan.prerequisites.map((item, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[9px] font-bold text-primary">
+                  {i + 1}
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* O que instalar */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
-              O que instalar
-            </h4>
-            <ul className="space-y-3">
-              {plan.setup.map((item, i) => (
-                <li key={i} className="space-y-0.5">
-                  <div className="flex items-center gap-2">
-                    <Monitor className="size-3.5 shrink-0 text-muted-foreground/60" />
-                    <span className="text-sm font-semibold text-foreground">
-                      {item.url ? (
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline-offset-2 hover:underline hover:text-primary transition-colors"
-                        >
-                          {item.name}
-                        </a>
-                      ) : (
-                        item.name
-                      )}
-                    </span>
+        {/* O que instalar */}
+        <div className="mb-8 space-y-4">
+          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+            O que instalar
+          </h4>
+
+          {/* Intro do winget */}
+          {plan.wingetIntro && (
+            <div className="flex items-start gap-3 rounded-xl border border-border/60 bg-muted/30 p-4">
+              <Terminal className="mt-0.5 size-4 shrink-0 text-muted-foreground/60" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">O que é winget?</span>{' '}
+                {plan.wingetIntro}
+              </p>
+            </div>
+          )}
+
+          <ul className="space-y-5">
+            {plan.setup.map((item, i) => (
+              <li key={i} className="rounded-xl border border-border/60 p-4 space-y-3">
+                {/* Nome + link */}
+                <div className="flex items-center gap-2">
+                  <Monitor className="size-3.5 shrink-0 text-muted-foreground/60" />
+                  <span className="text-sm font-semibold text-foreground">
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-primary hover:underline underline-offset-2"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      item.name
+                    )}
+                  </span>
+                </div>
+
+                {/* Descrição */}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+
+                {/* Analogia */}
+                {item.analogy && (
+                  <div className="flex items-start gap-2 rounded-lg bg-primary/6 px-3 py-2.5">
+                    <Lightbulb className="mt-0.5 size-3.5 shrink-0 text-primary/60" />
+                    <p className="text-xs leading-relaxed text-primary/80">
+                      <span className="font-semibold">Analogia:</span> {item.analogy}
+                    </p>
                   </div>
-                  <p className="pl-5 text-xs leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+                )}
+
+                {/* Comando winget */}
+                {item.wingetCommand && (
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
+                      Instalar via winget
+                    </p>
+                    <code className="block w-full rounded-lg bg-muted px-3 py-2 font-mono text-xs text-foreground/80 break-all">
+                      {item.wingetCommand}
+                    </code>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Agenda */}

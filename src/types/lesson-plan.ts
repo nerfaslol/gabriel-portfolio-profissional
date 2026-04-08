@@ -8,6 +8,8 @@ export interface LessonStep {
 export interface SetupItem {
   name: string
   description: string
+  analogy?: string
+  wingetCommand?: string
   url?: string
 }
 
@@ -26,6 +28,7 @@ export interface LessonPlan {
   tags: string[]
   imageUrl?: string
   prerequisites: string[]
+  wingetIntro?: string
   setup: SetupItem[]
   agenda: LessonStep[]
   exercises: string[]

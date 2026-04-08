@@ -18,28 +18,44 @@ export const lessonPlan: LessonPlan = {
     'Nenhum conhecimento prévio de programação necessário — só curiosidade',
   ],
 
+  wingetIntro:
+    'Winget é o instalador automático do Windows — pensa nele como a loja do Roblox ou a Google Play, só que para programas do computador. Em vez de entrar em sites, clicar em "baixar", "aceitar termos" e ficar clicando em "próximo", você abre o terminal e digita um comando. O Windows baixa e instala tudo sozinho, sem complicação.',
+
   setup: [
     {
       name: 'VS Code',
       description:
-        'Editor de código gratuito da Microsoft. É onde vamos escrever o HTML e CSS da aula.',
+        'Editor de código gratuito da Microsoft. É onde vamos escrever o HTML e CSS da aula — com destaque de cores, autocomplete e organização de arquivos.',
+      analogy:
+        'Pensa no VS Code como o Roblox Studio: você não joga Roblox por ele, você cria. O VS Code é a ferramenta onde você constrói sites, assim como o Studio é onde você constrói mapas e jogos.',
+      wingetCommand: 'winget install Microsoft.VisualStudioCode',
       url: 'https://code.visualstudio.com/',
     },
     {
       name: 'Extensão Live Server',
       description:
-        'Plugin para VS Code que abre seu site no navegador em tempo real enquanto você edita. Instale pelo marketplace do VS Code pesquisando "Live Server" (autor: Ritwick Dey).',
+        'Plugin para VS Code que abre seu site no navegador em tempo real enquanto você edita. Qualquer mudança no código aparece na tela automaticamente, sem precisar ficar abrindo o arquivo na mão.',
+      analogy:
+        'É o "playtesting" do Roblox Studio — você mexe em algo e já vê o resultado na hora, sem precisar exportar nem reabrir nada.',
+      wingetCommand:
+        'Instale dentro do VS Code: clique no ícone de extensões (Ctrl+Shift+X), pesquise "Live Server" e clique em instalar.',
     },
     {
       name: 'Google Chrome',
       description:
-        'Navegador recomendado para a aula pelas ferramentas de desenvolvedor (F12) e compatibilidade.',
+        'Navegador recomendado para a aula. Tem as melhores ferramentas de desenvolvedor (aperte F12 para ver por dentro de qualquer site) e é o mais compatível com o que vamos criar.',
+      analogy:
+        'Você provavelmente já usa o Chrome para jogar jogos online, assistir YouTube ou pesquisar cheats de jogos. Na aula vamos usar ele para ver o site que você criou e espiar como outros sites foram feitos por dentro — como abrir as entranhas de um jogo.',
+      wingetCommand: 'winget install Google.Chrome',
       url: 'https://www.google.com/chrome/',
     },
     {
       name: 'Conta no Gemini',
       description:
-        'Acesse com sua conta Google em gemini.google.com — é gratuito. Vamos usá-lo para gerar código HTML, tirar dúvidas e explorar ideias durante a aula.',
+        'IA do Google, gratuita com qualquer conta Google. Vamos usá-la para gerar código, tirar dúvidas na hora e explorar ideias sem travar na aula.',
+      analogy:
+        'O Gemini é como ter um amigo que já estudou programação a vida inteira e está sempre disponível no WhatsApp. Você pergunta qualquer coisa — "como mudo a cor do texto?" — e ele responde na hora com o código pronto. Melhor que ficar caçando no Google.',
+      wingetCommand: 'Não precisa instalar — acesse em gemini.google.com com sua conta Google.',
       url: 'https://gemini.google.com/',
     },
   ],
