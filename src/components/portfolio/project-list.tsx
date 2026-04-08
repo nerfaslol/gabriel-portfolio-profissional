@@ -1,5 +1,6 @@
 import { ProjectCard } from './project-card'
 import { projects } from '@/data/projects'
+import { FadeInView } from '@/components/fade-in-view'
 
 /**
  * ProjectList Component
@@ -26,7 +27,6 @@ export function ProjectList() {
           >
             Meus Projetos
           </h2>
-          <div className="h-1.5 w-16 rounded-full bg-primary sm:w-20" />
         </div>
         <p className="max-w-[52ch] text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
           Confira alguns dos projetos em que estive trabalhando recentemente.
@@ -34,11 +34,13 @@ export function ProjectList() {
       </div>
 
       {hasProjects ? (
-        <div className="grid grid-cols-1 gap-6 animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        <FadeInView>
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 2xl:gap-12">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </FadeInView>
       ) : (
         <div className="rounded-3xl border-2 border-dashed border-border/60 bg-muted/20 py-18 text-center sm:py-24">
           <div className="mx-auto max-w-[400px] space-y-4 px-6">

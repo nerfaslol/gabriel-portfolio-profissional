@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ImageOff } from 'lucide-react'
 import type { Project } from '@/types/project'
 import {
   Card,
@@ -23,21 +25,25 @@ interface ProjectCardProps {
  * - Precise spacing (p-6).
  */
 export function ProjectCard({ project }: ProjectCardProps) {
+  const [imageError, setImageError] = useState(false)
+
   return (
-    <Card className="group flex h-full flex-col overflow-hidden border-border/70 bg-background shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:ring-1 hover:ring-primary/12">
-      {/* Project Image Placeholder/Thumbnail */}
+    <Card className="group flex h-full flex-col overflow-hidden border-border/70 bg-background shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+      {/* Project Image / Fallback */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted/50 sm:aspect-video">
-        <img
-          src={project.imageUrl}
-          alt={`Captura de tela do projeto: ${project.title}`}
-          className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-          onError={(e) => {
-            ;(e.target as HTMLImageElement).src =
-              'https://placehold.co/600x400?text=Imagem+indispon%C3%ADvel'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {!imageError && project.imageUrl ? (
+          <img
+            src={project.imageUrl}
+            alt={`Captura de tela do projeto: ${project.title}`}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted-foreground/30">
+            <ImageOff className="size-8" />
+          </div>
+        )}
       </div>
 
       {/* Project Content */}
@@ -48,7 +54,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         >
           {project.title}
         </CardTitle>
-        <CardDescription className="min-h-[4.3rem] text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+        <CardDescription className="line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
           {project.description || 'Sem descrição disponível para este projeto.'}
         </CardDescription>
       </CardHeader>
@@ -62,7 +68,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             project.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex min-h-8 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground transition-all hover:border-primary/30 hover:text-foreground sm:min-h-9 sm:text-[11px]"
+                className="inline-flex min-h-10 items-center rounded-full border border-border/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground transition-all hover:border-primary/30 hover:text-foreground sm:text-[11px]"
               >
                 {tag}
               </span>
