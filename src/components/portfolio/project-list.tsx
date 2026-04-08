@@ -78,7 +78,7 @@ export function ProjectList() {
                   <img
                     src={lessonPlan.imageUrl}
                     alt={`Imagem do projeto: ${lessonPlan.title}`}
-                    className="h-auto w-full"
+                    className="h-auto w-full rounded-xl border border-border/60 shadow-md"
                     loading="lazy"
                   />
                 </div>
