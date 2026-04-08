@@ -84,11 +84,11 @@ export function ProjectList() {
 
               {/* Imagem à direita */}
               {lessonPlan.imageUrl && (
-                <div className="flex shrink-0 items-center justify-center p-5 sm:w-56 sm:p-4 lg:w-72">
+                <div className="shrink-0 self-center p-4 sm:w-56 sm:p-5 lg:w-72">
                   <img
                     src={lessonPlan.imageUrl}
                     alt={`Imagem do projeto: ${lessonPlan.title}`}
-                    className="h-auto w-full rounded-xl object-contain"
+                    className="h-auto w-full"
                     loading="lazy"
                   />
                 </div>
