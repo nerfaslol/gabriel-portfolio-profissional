@@ -1,30 +1,38 @@
-import { Button } from '@/components/ui/button'
+import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { ProjectList } from '@/components/portfolio/project-list'
 
 function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-6 py-16 text-foreground">
-      <section className="w-full max-w-2xl rounded-2xl border bg-card p-10 text-center shadow-sm">
-        <span className="mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground">
-          Vite + React + TypeScript + Tailwind v4 + shadcn/ui
-        </span>
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Projeto inicial pronto
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base">
-          Stack configurada com instalação latest validada via Context7, incluindo alias,
-          Tailwind para Vite e shadcn/ui inicializado.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button>Começar</Button>
-          <Button
-            variant="outline"
-            onClick={() => window.open('https://ui.shadcn.com/docs/installation/vite', '_blank', 'noopener,noreferrer')}
-          >
-            Docs shadcn/ui
-          </Button>
-        </div>
-      </section>
-    </main>
+    <ThemeProvider defaultTheme="system" storageKey="nerfas-theme">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="container mx-auto flex h-14 items-center justify-between px-6">
+            <div className="font-bold text-lg">Meu Portfólio</div>
+            <ThemeToggle />
+          </div>
+        </header>
+
+        <main className="flex-1 container mx-auto px-6 py-8">
+          <section className="py-12 flex flex-col items-center text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl mb-6">
+              Olá, eu sou um <span className="text-primary">Desenvolvedor</span>
+            </h1>
+            <p className="max-w-[700px] text-lg text-muted-foreground mb-8">
+              Bem-vindo ao meu portfólio. Aqui você encontrará projetos focados em desenvolvimento e soluções criativas.
+            </p>
+          </section>
+
+          <ProjectList />
+        </main>
+
+        <footer className="border-t py-6">
+          <div className="container mx-auto px-6 text-center text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} Meu Portfólio. Todos os direitos reservados.
+          </div>
+        </footer>
+      </div>
+    </ThemeProvider>
   )
 }
 
