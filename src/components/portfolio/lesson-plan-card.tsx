@@ -159,11 +159,11 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
       {/* Content */}
       <div className="p-6 sm:p-8 lg:p-10">
         {/* Header */}
-        <div className="mb-8 space-y-3">
-          <h3 className="text-2xl font-extrabold tracking-tightest sm:text-3xl lg:text-4xl">
+        <div className="mb-10 space-y-4">
+          <h3 className="text-3xl font-extrabold tracking-tightest sm:text-4xl lg:text-5xl">
             {plan.title}
           </h3>
-          <p className="text-base font-semibold text-muted-foreground sm:text-lg">
+          <p className="text-lg font-semibold text-muted-foreground sm:text-xl">
             {plan.subtitle}
           </p>
 
@@ -173,43 +173,43 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
               type="button"
               onClick={() => onModalityChange('presencial')}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200',
+                'inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200',
                 modality === 'presencial'
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              <School className="size-3" />
+              <School className="size-3.5" />
               Presencial
             </button>
             <button
               type="button"
               onClick={() => onModalityChange('distancia')}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200',
+                'inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200',
                 modality === 'distancia'
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              <Laptop className="size-3" />
+              <Laptop className="size-3.5" />
               À Distância
             </button>
           </div>
 
           {/* Meta chips */}
           <div className="flex flex-wrap gap-2 pt-1">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 px-3 py-1.5 text-xs font-semibold text-muted-foreground">
-              <Clock className="size-3" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 px-3 py-1.5 text-sm font-semibold text-muted-foreground">
+              <Clock className="size-3.5" />
               {plan.duration}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 px-3 py-1.5 text-xs font-semibold text-muted-foreground">
-              <Users className="size-3" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 px-3 py-1.5 text-sm font-semibold text-muted-foreground">
+              <Users className="size-3.5" />
               {plan.targetAudience}
             </span>
           </div>
 
-          <p className="max-w-[70ch] text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="max-w-[70ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
             {plan.description}
           </p>
 
@@ -218,7 +218,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
             {plan.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full border border-border/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                className="inline-flex items-center rounded-full border border-border/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
               >
                 {tag}
               </span>
@@ -235,7 +235,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
             </h4>
             <ul className="space-y-2">
               {plan.objectives.map((obj, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                <li key={i} className="flex items-start gap-2.5 text-base text-foreground/80">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-500/70" />
                   <span className="leading-relaxed">{obj.text}</span>
                 </li>
@@ -268,11 +268,11 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
           <div className="mb-8 rounded-xl border border-primary/20 bg-primary/[0.03] p-4 sm:p-5">
             <div className="mb-2 flex items-center gap-2">
               <MessageCircle className="size-4 text-primary/70" />
-              <span className="text-xs font-bold uppercase tracking-[0.24em] text-primary/80">
-                🧊 Icebreaker — Script de abertura
+              <span className="text-sm font-bold uppercase tracking-[0.24em] text-primary/80">
+                🧊 Icebreaker · Script de abertura
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-foreground/80 italic">
+            <p className="text-base leading-relaxed text-foreground/80 italic">
               "{plan.icebreaker}"
             </p>
           </div>
@@ -280,13 +280,13 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
 
         {/* ─── Pré-requisitos ────────────────────────────────────── */}
         <div className="mb-8 space-y-3">
-          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+          <h4 className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
             Pré-requisitos
           </h4>
           <ul className="space-y-2">
             {plan.prerequisites.map((item, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[9px] font-bold text-primary">
+              <li key={i} className="flex items-start gap-2.5 text-base text-foreground/80">
+                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
                   {i + 1}
                 </span>
                 {item}
@@ -297,7 +297,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
 
         {/* ─── O que instalar ────────────────────────────────────── */}
         <div className="mb-8 space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+          <h4 className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
             O que instalar
           </h4>
 
@@ -305,7 +305,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
           {plan.wingetIntro && (
             <div className="flex items-start gap-3 rounded-xl border border-border/60 bg-muted/30 p-4">
               <Terminal className="mt-0.5 size-4 shrink-0 text-muted-foreground/60" />
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 <span className="font-semibold text-foreground">O que é winget?</span>{' '}
                 {plan.wingetIntro}
               </p>
@@ -318,7 +318,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
                 {/* Name + link */}
                 <div className="flex items-center gap-2">
                   <Monitor className="size-3.5 shrink-0 text-muted-foreground/60" />
-                  <span className="text-sm font-semibold text-foreground">
+                  <span className="text-base font-semibold text-foreground">
                     {item.url ? (
                       <a
                         href={item.url}
@@ -335,7 +335,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
                 </div>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-base leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
 
@@ -343,7 +343,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
                 {item.analogy && (
                   <div className="flex items-start gap-2 rounded-lg bg-primary/6 px-3 py-2.5">
                     <Lightbulb className="mt-0.5 size-3.5 shrink-0 text-primary/60" />
-                    <p className="text-xs leading-relaxed text-primary/80">
+                    <p className="text-sm leading-relaxed text-primary/80">
                       <span className="font-semibold">Analogia:</span> {item.analogy}
                     </p>
                   </div>
@@ -353,7 +353,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
                 {item.teacherScript && (
                   <div className="flex items-start gap-2 rounded-lg bg-amber-500/6 px-3 py-2.5">
                     <GraduationCap className="mt-0.5 size-3.5 shrink-0 text-amber-600/60 dark:text-amber-400/60" />
-                    <p className="text-xs leading-relaxed text-amber-700/80 dark:text-amber-300/80">
+                    <p className="text-sm leading-relaxed text-amber-700/80 dark:text-amber-300/80">
                       <span className="font-semibold">Para o professor:</span>{' '}
                       {item.teacherScript}
                     </p>
@@ -366,7 +366,7 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
                       Instalar via winget
                     </p>
-                    <code className="block w-full rounded-lg bg-muted px-3 py-2 font-mono text-xs text-foreground/80 break-all">
+                    <code className="block w-full rounded-lg bg-muted px-3 py-2 font-mono text-sm text-foreground/80 break-all">
                       {item.wingetCommand}
                     </code>
                   </div>
@@ -378,8 +378,8 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
 
         {/* ─── Agenda ────────────────────────────────────────────── */}
         <div className="mb-8 space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
-            Agenda — Cronograma da Aula
+          <h4 className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
+            Agenda · Cronograma da Aula
           </h4>
           <div className="space-y-3">
             {plan.agenda.map((step, i) => (
@@ -390,13 +390,13 @@ export function LessonPlanCard({ plan, modality, onModalityChange }: LessonPlanC
 
         {/* ─── Exercícios ────────────────────────────────────────── */}
         <div className="mb-8 space-y-3">
-          <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
+          <h4 className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
             Exercícios Práticos
           </h4>
           <ol className="space-y-2">
             {plan.exercises.map((ex, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-muted text-[11px] font-bold text-muted-foreground">
+              <li key={i} className="flex items-start gap-3 text-base text-foreground/80">
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">
                   {i + 1}
                 </span>
                 <span className="leading-relaxed">{ex}</span>

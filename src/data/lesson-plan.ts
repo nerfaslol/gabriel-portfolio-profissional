@@ -1,5 +1,9 @@
 import type { LessonModality, LessonPlan } from '@/types/lesson-plan'
 import lessonPlanBanner from '@/assets/lesson-plan-banner.png'
+import slideAbertura from '@/assets/slide-abertura.png'
+import htmlAnatomy from '@/assets/html-anatomy.png'
+import cssBeforeAfter from '@/assets/css-before-after.png'
+import cssCheatsheet from '@/assets/css-cheatsheet.png'
 
 /* ═══════════════════════════════════════════════════════════════════════
    Factory que gera o plano de aula completo para cada modalidade.
@@ -14,13 +18,13 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
     modality,
     title: 'Web Design com IA',
     subtitle: isRemote
-      ? 'Introdução prática para jovens criadores — Edição à Distância'
-      : 'Introdução prática para jovens criadores — Edição Presencial',
+      ? 'Aula prática para jovens criadores · Edição à Distância'
+      : 'Aula prática para jovens criadores · Edição Presencial',
     targetAudience: 'Alunos de 14 a 17 anos',
     duration: '1h30',
     description: isRemote
-      ? 'Uma aula à distância que ensina os fundamentos de HTML, CSS e JavaScript usando ferramentas de inteligência artificial — como Gemini e ChatGPT — como assistentes de aprendizado. A aula acontece por videoconferência com compartilhamento de tela, breakout rooms e interação via chat. O objetivo não é memorizar código, mas entender como pensar em desenvolvimento e como usar IA para acelerar e melhorar o que você cria.'
-      : 'Uma aula presencial e introdutória que ensina os fundamentos de HTML, CSS e JavaScript enquanto usa ferramentas de inteligência artificial — como Gemini e ChatGPT — como assistentes de aprendizado. O objetivo não é memorizar código, mas entender como pensar em desenvolvimento e como usar IA para acelerar e melhorar o que você cria.',
+      ? 'Nessa aula os alunos vão montar um site pessoal do zero usando HTML e CSS, com ajuda de IA (Gemini ou ChatGPT) pra tirar dúvidas e gerar código. A aula rola por videoconferência com compartilhamento de tela e breakout rooms pra quem precisar de ajuda individual. No final, todo mundo sai com uma página publicável.'
+      : 'Nessa aula os alunos vão montar um site pessoal do zero usando HTML e CSS, com ajuda de IA (Gemini ou ChatGPT) pra tirar dúvidas e gerar código. A ideia é que cada um saia com uma página sua, funcionando de verdade no navegador, e entendendo como tudo funciona por trás.',
     tags: [
       'HTML',
       'CSS',
@@ -33,556 +37,557 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
     ],
     imageUrl: lessonPlanBanner,
 
-    // ─── OBJETIVOS DE APRENDIZAGEM (compartilhados) ─────────────────
+    // ─── OBJETIVOS DE APRENDIZAGEM ──────────────────────────────────
     objectives: [
       {
-        text: 'Compreender o que é HTML e sua função como "esqueleto" de uma página web',
+        text: 'Entender o que é HTML e como ele monta a estrutura de uma página',
         relatedStepIndex: 2,
       },
       {
-        text: 'Saber criar e linkar um arquivo CSS para estilizar uma página',
+        text: 'Criar um arquivo CSS e conectar com o HTML pra mudar cores, fontes e layout',
         relatedStepIndex: 3,
       },
       {
-        text: 'Utilizar ferramentas de IA (Gemini/ChatGPT) como assistentes de coding, não como respostas prontas',
+        text: 'Usar IA (Gemini/ChatGPT) como ferramenta de apoio, sabendo ler e adaptar o que ela gera',
         relatedStepIndex: 2,
       },
       {
-        text: 'Construir uma mini página pessoal funcional até o final da aula',
+        text: 'Terminar a aula com uma página pessoal funcionando no navegador',
         relatedStepIndex: 4,
       },
       {
-        text: 'Desenvolver pensamento crítico sobre o que a IA gera — ler, entender e adaptar',
+        text: 'Saber diferenciar o que a IA acertou do que precisa de ajuste',
       },
     ],
 
     // ─── BRIEFING DO PROFESSOR ──────────────────────────────────────
     teacherBriefing: isRemote
       ? [
-          '🎯 O foco da aula NÃO é decorar tags HTML. É que os alunos saiam entendendo que podem criar coisas reais para a web com as ferramentas certas.',
-          '⏱️ Controle o tempo rigidamente. À distância a dispersão é ainda maior. Use timers visíveis e avise: "faltam 5 minutos para o próximo bloco".',
-          '💻 Compartilhe sua tela o tempo inteiro. Nunca fale de código sem mostrar. Use layout de tela dividida: código em uma metade, navegador na outra.',
-          '📹 Peça para todos ficarem com a câmera LIGADA. Isso ajuda a detectar quem está perdido (cara de confusão = hora de pausar e explicar).',
-          '💬 Monitore o CHAT ativamente. Peça aos alunos para usarem "✅" no chat quando terminarem cada etapa e "❌" se travarem.',
-          '🏠 Use BREAKOUT ROOMS (salas pequenas no Zoom/Meet) para ajudar alunos individualmente sem parar a turma toda.',
-          '🚫 Evite jargões técnicos sem analogia. Nunca diga "DOM", "renderizar" ou "parsear" sem antes traduzir para o vocabulário do aluno.',
-          '🎮 Use analogias de jogos (Roblox, Minecraft, Fortnite) sempre que possível — esse é o universo deles.',
-          '🖼️ Os slides e imagens ao longo desta aula servem como apoio visual para o compartilhamento de tela. Mostre-os nos momentos indicados.',
-          '🔇 Peça para todos ficarem no MUTE quando não estiverem falando, para evitar ruído de fundo.',
+          '🎯 O objetivo é que os alunos saiam da aula sabendo que conseguem construir coisas reais pra web. Foque nisso, e menos em decorar sintaxe.',
+          '⏱️ Controle o tempo com rigor. Online a dispersão é pior. Use timers visíveis e avise: "faltam 5 minutos pro próximo bloco".',
+          '💻 Compartilhe sua tela o tempo inteiro. Cada conceito que falar, mostre na prática. Layout dividido: código de um lado, navegador do outro.',
+          '📹 Peça pra todos ligarem a câmera. Dá pra perceber quem tá perdido pela expressão facial.',
+          '💬 Monitore o chat ativamente. Peça pros alunos mandarem "✅" quando terminarem cada etapa e "❌" se travarem.',
+          '🏠 Use breakout rooms pra ajudar alunos individualmente sem pausar a turma toda.',
+          '🚫 Traduza os termos técnicos. Se disser "DOM" ou "renderizar", sempre explique o que é.',
+          '🎮 Analogias de jogos funcionam muito: Roblox Studio, Minecraft, Fortnite. É o mundo deles.',
+          '🖼️ As imagens ao longo da aula são pra mostrar na tela nos momentos indicados.',
+          '🔇 Todo mundo no mute quando não estiver falando.',
         ]
       : [
-          '🎯 O foco da aula NÃO é decorar tags HTML. É que os alunos saiam entendendo que podem criar coisas reais para a web com as ferramentas certas.',
-          '⏱️ Controle o tempo rigidamente. Adolescentes perdem o foco rápido. As fases de código devem alternar com demonstrações visuais e momentos de interação.',
-          '💡 Use o projetor/tela o tempo inteiro. Nunca fale de código sem mostrar. A cada conceito novo, mostre o resultado visual no navegador ANTES de mostrar o código.',
-          '🤝 Circule pela sala durante as atividades práticas. Não fique parado na frente. Identifique quem está travado nos primeiros 2 minutos e ajude imediatamente.',
-          '🚫 Evite jargões técnicos sem analogia. Nunca diga "DOM", "renderizar" ou "parsear" sem antes traduzir para o vocabulário do aluno.',
-          '🎮 Use analogias de jogos (Roblox, Minecraft, Fortnite) sempre que possível — esse é o universo deles e facilita a absorção.',
-          '📱 Peça para os alunos guardarem o celular. Se alguém não tiver computador, organize duplas.',
-          '🖼️ Os slides e imagens ao longo desta aula servem como apoio visual para o projetor. Mostre-os nos momentos indicados para manter a atenção e contextualizar os conceitos.',
+          '🎯 O objetivo é que os alunos saiam da aula sabendo que conseguem construir coisas reais pra web. Foque nisso, e menos em decorar sintaxe.',
+          '⏱️ Controle o tempo com rigor. Adolescente perde o foco rápido. Alterne entre explicação e prática a cada 10-15 minutos.',
+          '💡 Projetor ligado o tempo inteiro. Cada conceito que falar, mostre na prática. Mostra o resultado visual ANTES do código.',
+          '🤝 Circule pela sala nas atividades práticas. Identifica quem travou nos primeiros 2 minutos e vai direto ajudar.',
+          '🚫 Traduza os termos técnicos. Se disser "DOM" ou "renderizar", sempre explique o que é.',
+          '🎮 Analogias de jogos funcionam muito: Roblox Studio, Minecraft, Fortnite. É o mundo deles.',
+          '📱 Celulares guardados. Se alguém não tiver computador, faz dupla.',
+          '🖼️ As imagens ao longo da aula são pra projetar nos momentos indicados.',
         ],
 
     // ─── ICEBREAKER ──────────────────────────────────────────────────
     icebreaker: isRemote
-      ? 'Comece perguntando no chat: "Manda um 👋 no chat quem já usou ChatGPT ou Gemini!" (a maioria vai reagir). Depois: "E quem já pediu pra IA criar alguma coisa — um desenho, um texto, uma música? Manda um 🎨 se sim!" Use as reações como gancho. Então diga: "Hoje vocês vão aprender a pedir pra IA criar um site inteiro pra vocês. Mas o mais legal: vocês vão entender como o site funciona por dentro e vão poder mudar tudo que quiserem. No final da aula, cada um vai ter sua própria página na internet. Agora liga a câmera e me conta: qual app ou site vocês mais usam no dia a dia?"'
-      : 'Comece perguntando: "Quem aqui já usou ChatGPT ou Gemini?" (a maioria vai levantar a mão). Depois: "E quem já pediu pra IA criar alguma coisa — um desenho, um texto, uma música?" (vários vão responder). Então diga: "Hoje vocês vão aprender a pedir pra IA criar um site inteiro pra vocês. Mas o mais legal: vocês vão entender como o site funciona por dentro e vão poder mudar tudo que quiserem. No final da aula, cada um vai ter sua própria página na internet."',
+      ? 'Comece assim: "Manda um 👋 no chat quem já usou ChatGPT ou Gemini!" Espere as reações. "E quem já pediu pra IA criar alguma coisa? Um desenho, um texto, qualquer coisa? Manda um 🎨 se sim!" Então emende: "Beleza, hoje vocês vão pedir pra IA criar um site inteiro. Só que o diferencial é que vocês vão entender o que tá acontecendo por trás, e vão poder mudar tudo. No final da aula cada um vai ter sua própria página. Liga a câmera e me conta: qual app vocês mais usam?"'
+      : 'Comece assim: "Quem aqui já usou ChatGPT ou Gemini?" Espere as mãos. "E quem já pediu pra IA criar alguma coisa? Um desenho, um texto?" Então emende: "Beleza, hoje vocês vão pedir pra IA criar um site inteiro. Só que o diferencial é que vocês vão entender o que tá acontecendo por trás, e vão poder mudar tudo. No final da aula cada um vai ter sua própria página."',
 
     // ─── PRÉ-REQUISITOS ──────────────────────────────────────────────
     prerequisites: isRemote
       ? [
-          'Computador com Windows, macOS ou Linux (com webcam e microfone funcionando)',
-          'Acesso à internet estável (mínimo recomendado: 5 Mbps)',
-          'Plataforma de videoconferência instalada (Google Meet ou Zoom)',
-          'Conta Google (para usar o Gemini gratuitamente)',
-          'Um espaço silencioso e bem iluminado para participar da aula',
-          'Nenhum conhecimento prévio de programação necessário — só curiosidade',
+          'Computador com Windows, macOS ou Linux (com webcam e microfone)',
+          'Internet estável (mínimo 5 Mbps)',
+          'Google Meet ou Zoom instalado',
+          'Conta Google (pro Gemini)',
+          'Um canto sossegado, sem muito barulho',
+          'Vontade de aprender, só isso',
         ]
       : [
           'Computador com Windows, macOS ou Linux',
-          'Acesso à internet estável',
-          'Conta Google (para usar o Gemini gratuitamente)',
-          'Nenhum conhecimento prévio de programação necessário — só curiosidade',
+          'Internet estável',
+          'Conta Google (pro Gemini)',
+          'Vontade de aprender, só isso',
         ],
 
-    // ─── WINGET (compartilhado) ──────────────────────────────────────
+    // ─── WINGET ──────────────────────────────────────────────────────
     wingetIntro:
-      'Winget é o instalador automático do Windows — pensa nele como a loja do Roblox ou a Google Play, só que para programas do computador. Em vez de entrar em sites, clicar em "baixar", "aceitar termos" e ficar clicando em "próximo", você abre o terminal e digita um comando. O Windows baixa e instala tudo sozinho, sem complicação.',
+      'Winget é tipo a loja do Roblox ou a Google Play, só que pro computador. Em vez de entrar em site, clicar em "baixar", aceitar termos e ficar clicando "próximo", você abre o terminal e digita um comando. O Windows faz tudo sozinho.',
 
     // ─── SETUP ───────────────────────────────────────────────────────
     setup: [
       {
         name: 'VS Code',
         description:
-          'Editor de código gratuito da Microsoft. É onde vamos escrever o HTML e CSS da aula — com destaque de cores, autocomplete e organização de arquivos.',
+          'Editor de código gratuito da Microsoft. É onde a gente vai escrever HTML e CSS. Tem destaque de cores, autocomplete e organização de arquivos.',
         analogy:
-          'Pensa no VS Code como o Roblox Studio: você não joga Roblox por ele, você cria. O VS Code é a ferramenta onde você constrói sites, assim como o Studio é onde você constrói mapas e jogos.',
+          'Pensa no VS Code como o Roblox Studio. Pelo Studio você não joga, você cria. O VS Code é a mesma ideia: a ferramenta onde você constrói sites.',
         wingetCommand: 'winget install Microsoft.VisualStudioCode',
         url: 'https://code.visualstudio.com/',
         teacherScript: isRemote
-          ? 'Compartilhe sua tela mostrando o PowerShell e rode o comando winget ao vivo. Peça aos alunos para fazerem o mesmo — se alguém travar, peça para compartilhar a tela via breakout room e ajude individualmente. Se alguém tiver Mac, mande o link do site no chat.'
-          : 'Projete a tela do seu computador enquanto instala. No Windows, abra o PowerShell como administrador e rode o comando. Espere o download + instalação terminar (cerca de 1 minuto). Se alguém tiver Mac, direcione para o site do VS Code para download direto. Durante a instalação, aproveite para explicar o que é um editor de código vs. um editor de texto comum (como Word).',
+          ? 'Compartilhe sua tela mostrando o PowerShell e rode o winget ao vivo. Se alguém travar, peça pra compartilhar a tela ou mova pra breakout room. Quem tiver Mac, manda o link no chat.'
+          : 'Projete sua tela e rode o comando. Leva uns 1-2 minutos. Se alguém tiver Mac, manda pro site do VS Code. Enquanto instala, aproveita pra explicar a diferença entre editor de código e Word.',
       },
       {
         name: 'Extensão Live Server',
         description:
-          'Plugin para VS Code que abre seu site no navegador em tempo real enquanto você edita. Qualquer mudança no código aparece na tela automaticamente, sem precisar ficar abrindo o arquivo na mão.',
+          'Plugin pro VS Code que mostra o site no navegador em tempo real. Salvou o código? Já aparece a mudança automaticamente.',
         analogy:
-          'É o "playtesting" do Roblox Studio — você mexe em algo e já vê o resultado na hora, sem precisar exportar nem reabrir nada.',
+          'É o playtesting do Roblox Studio. Você mexe no código e já vê funcionando, sem exportar nada.',
         wingetCommand:
-          'Instale dentro do VS Code: clique no ícone de extensões (Ctrl+Shift+X), pesquise "Live Server" e clique em instalar.',
+          'Instale dentro do VS Code: Ctrl+Shift+X, pesquise "Live Server", clique em instalar.',
         teacherScript: isRemote
-          ? 'Compartilhe sua tela e demonstre passo a passo: VS Code → ícone de extensões → buscar "Live Server" → Install. Peça ✅ no chat quando terminarem. Use uma enquete rápida: "Todo mundo instalou?"'
-          : 'Demonstre passo a passo no projetor: abra o VS Code → clique no ícone de quadrados no lado esquerdo (extensões) → digite "Live Server" → clique em "Install" no primeiro resultado (por Ritwick Dey). Espere todos terminarem antes de prosseguir.',
+          ? 'Compartilhe tela: VS Code → extensões → buscar "Live Server" → Install. Peça ✅ no chat quando terminarem.'
+          : 'Demonstre no projetor passo a passo: VS Code → ícone de extensões → "Live Server" → Install. Espere todos terminarem.',
       },
       {
         name: 'Google Chrome',
         description:
-          'Navegador recomendado para a aula. Tem as melhores ferramentas de desenvolvedor (aperte F12 para ver por dentro de qualquer site) e é o mais compatível com o que vamos criar.',
+          'Navegador recomendado. Tem as melhores ferramentas de dev (F12 pra ver o código de qualquer site).',
         analogy:
-          'Você provavelmente já usa o Chrome para jogar jogos online, assistir YouTube ou pesquisar cheats de jogos. Na aula vamos usar ele para ver o site que você criou e espiar como outros sites foram feitos por dentro — como abrir as entranhas de um jogo.',
+          'Vocês já usam o Chrome pra YouTube, joguinhos, tudo. Agora vão usar ele pra ver o site que criaram e espiar como outros sites são feitos por dentro.',
         wingetCommand: 'winget install Google.Chrome',
         url: 'https://www.google.com/chrome/',
         teacherScript: isRemote
-          ? 'A maioria já terá Chrome. Pergunte no chat: "Quem NÃO tem Chrome? Manda o nome do seu navegador." Edge e Firefox funcionam, avise que as DevTools podem ser ligeiramente diferentes.'
-          : 'A maioria dos alunos já terá Chrome instalado. Peça para verificarem. Se alguém só tiver Edge ou Firefox, funciona também, mas avise que as DevTools podem ser ligeiramente diferentes. O importante é que todos tenham um navegador moderno.',
+          ? 'A maioria já tem Chrome. Pergunta no chat: "Quem NÃO tem?" Edge e Firefox servem, avisa que pode ter diferença pequena no DevTools.'
+          : 'A maioria já tem. Pede pra conferir. Edge e Firefox também servem.',
       },
       {
         name: 'Conta no Gemini',
         description:
-          'IA do Google, gratuita com qualquer conta Google. Vamos usá-la para gerar código, tirar dúvidas na hora e explorar ideias sem travar na aula.',
+          'IA do Google, de graça com conta Google. Vai ser nosso assistente pra gerar código e tirar dúvidas ao vivo.',
         analogy:
-          'O Gemini é como ter um amigo que já estudou programação a vida inteira e está sempre disponível no WhatsApp. Você pergunta qualquer coisa — "como mudo a cor do texto?" — e ele responde na hora com o código pronto. Melhor que ficar caçando no Google.',
+          'O Gemini é tipo um amigo que manja de programação e tá sempre online. Você pergunta "como faço essa cor?" e ele responde na hora com o código pronto.',
         wingetCommand:
-          'Não precisa instalar — acesse em gemini.google.com com sua conta Google.',
+          'Acesse gemini.google.com com sua conta Google.',
         url: 'https://gemini.google.com/',
         teacherScript: isRemote
-          ? 'Mande o link gemini.google.com no chat da videoconferência. Peça para todos abrirem. Se alguém não tiver conta Google, ajude via breakout room ou organize duplas por chat privado. Teste com a turma: "Digita \'Olá, Gemini!\' e manda ✅ no chat quando receber resposta."'
-          : 'Peça para todos abrirem gemini.google.com no Chrome e logarem com a conta Google. Se alguém não tiver conta Google, ajude a criar uma rapidamente ou organize uma dupla com alguém que tenha. Teste com a turma: peça para todos digitarem "Olá, Gemini!" e verem a resposta. Isso garante que todos estão prontos.',
+          ? 'Manda o link no chat. Se alguém não tem conta Google, ajuda via breakout room ou faz dupla. Teste rápido: "Digita \'Olá Gemini!\' e manda ✅ quando responder."'
+          : 'Pede pra todos abrirem gemini.google.com. Quem não tem conta Google, faz dupla. Teste: "Digita \'Olá Gemini!\' e vê a resposta."',
       },
       ...(isRemote
         ? [
             {
               name: 'Google Meet ou Zoom',
               description:
-                'Plataforma de videoconferência para a aula à distância. É onde todos vão se conectar, ver o compartilhamento de tela do professor e interagir.',
+                'Plataforma de videoconferência da aula. É onde todo mundo se conecta e acompanha o compartilhamento de tela.',
               analogy:
-                'É como uma sala de aula virtual — você vê o professor, os colegas, e pode levantar a mão (virtual) para fazer perguntas.',
+                'Sala de aula virtual. Você vê o professor, os colegas e pode pedir a palavra.',
               wingetCommand:
-                'Google Meet: acesse diretamente pelo navegador em meet.google.com. Zoom: winget install Zoom.Zoom',
+                'Meet: acesse pelo navegador em meet.google.com. Zoom: winget install Zoom.Zoom',
               teacherScript:
-                'Envie o link da sala com antecedência (e-mail ou grupo de WhatsApp). Peça aos alunos para entrarem 5 minutos antes, testarem áudio e câmera. Tenha pronto um slide de "sala de espera" com as instruções iniciais.',
+                'Envie o link da sala por e-mail/WhatsApp antes da aula. Peça pra entrarem 5 min mais cedo e testarem áudio e câmera.',
             },
           ]
         : []),
     ],
 
-    // ─── AGENDA — CRONOGRAMA COMPLETO ─────────────────────────────────
+    // ─── AGENDA ──────────────────────────────────────────────────────
     agenda: [
-      // BLOCO 1: Abertura
+      // BLOCO 1
       {
         time: '00:00 – 00:12',
         title: '🎤 Boas-vindas + Icebreaker',
         difficulty: 'fácil',
         description: isRemote
-          ? 'Apresentação do instrutor, teste de áudio/vídeo, icebreaker interativo via chat/reações e contextualização: o que é um site? O que é front-end? Por que aprender isso em 2025 com IA disponível?'
-          : 'Apresentação do instrutor, dinâmica rápida de icebreaker e contextualização: o que é um site? O que é front-end? Por que aprender isso em 2025 com IA disponível?',
+          ? 'Apresentação, teste de áudio/vídeo, icebreaker no chat e uma conversa rápida: o que é um site por dentro? Por que aprender isso quando a IA já existe?'
+          : 'Apresentação, icebreaker e uma conversa rápida: o que é um site por dentro? Por que aprender isso quando a IA já existe?',
         teacherNotes: isRemote
           ? [
-              'Comece com energia alta mesmo pela câmera. Se apresente (30 segundos) — nome, o que faz, um fato divertido.',
-              'Use o icebreaker com reações/chat descrito acima. "Manda um 👋 no chat!"',
-              'Faça uma enquete rápida (recurso do Meet/Zoom): "Qual app/site vocês mais usam?" com opções.',
-              'Compartilhe sua tela e mostre 2–3 sites conhecidos (Instagram, Roblox) — "isso é HTML + CSS!"',
-              'Diga: "Vou compartilhar minha tela o tempo inteiro. Quando eu pedir pra vocês fazerem algo, me mandem ✅ no chat quando terminarem e ❌ se travarem."',
-              '⚠️ NÃO gaste mais de 12 minutos. Verificações de áudio/vídeo contam nesse tempo.',
+              'Comece com energia. Se apresente em 30 segundos: nome, o que faz, um fato aleatório sobre você.',
+              'Icebreaker com chat/reações. "Manda 👋 no chat!"',
+              'Enquete rápida (recurso do Meet/Zoom): "Qual site vocês mais usam?"',
+              'Compartilhe tela e mostre 2-3 sites que eles usam (Instagram, Roblox). "Tudo isso é HTML + CSS."',
+              '"Vou compartilhar minha tela a aula toda. Quando pedir algo, mandem ✅ quando terminarem, ❌ se travarem."',
+              '⚠️ 12 min no máximo. Teste de áudio conta nesse tempo.',
             ]
           : [
-              'Comece com energia alta. Se apresente de forma breve (30 segundos) — nome, o que você faz, e um fato divertido.',
-              'Use o icebreaker descrito acima. É essencial para quebrar a barreira inicial.',
-              'Pergunte: "Alguém sabe a diferença entre um site e um app?" — deixe livre, não existe resposta errada.',
-              'Mostre no projetor 2–3 sites conhecidos (Instagram web, Roblox, etc.) e diga: "isso é feito com o que vamos aprender hoje".',
-              'Apresente: "Tudo que vocês veem na internet — cada botão, cada foto, cada texto — foi construído por alguém com as mesmas ferramentas que vocês vão usar agora."',
-              '⚠️ NÃO gaste mais de 12 minutos nessa parte.',
+              'Comece com energia. Se apresente em 30 segundos: nome, o que faz, um fato aleatório sobre você.',
+              'Use o icebreaker. Quebrar a barreira logo no início é essencial.',
+              '"Alguém sabe a diferença entre um site e um app?" Deixe livre, toda resposta vale.',
+              'Mostre no projetor 2-3 sites que eles usam (Instagram, Roblox). "Tudo isso é feito com o que vamos aprender hoje."',
+              '"Cada botão, cada foto, cada texto na internet foi construído por alguém com as mesmas ferramentas que vocês vão usar agora."',
+              '⚠️ 12 min no máximo.',
             ],
         images: [
           {
             placeholder:
-              '📸 Slide de abertura com o título "Web Design com IA" e os logos de HTML, CSS, Gemini',
+              '📸 Slide de abertura: "Web Design com IA" + logos das tecnologias',
             alt: 'Slide de título da aula Web Design com IA',
+            src: slideAbertura,
           },
           {
             placeholder:
-              '📸 Screenshot de sites populares (Instagram, Roblox, YouTube) lado a lado com a legenda "Tudo isso é HTML + CSS"',
+              '📸 Sites populares lado a lado: "Tudo isso é HTML + CSS"',
             alt: 'Comparativo visual de sites populares feitos com HTML e CSS',
           },
         ],
         aiTip:
-          'Peça ao Gemini: "Explica o que é HTML em 3 linhas para um aluno de 15 anos que nunca programou." Projete a resposta na tela e pergunte: "O que vocês acharam? Ficou claro?" Use isso para mostrar como a IA já pode ser útil.',
+          'Peça ao Gemini: "Explica o que é HTML em 3 linhas pra um aluno de 15 anos que nunca programou." Mostre na tela e pergunte: "Ficou claro? Concordam?"',
       },
 
-      // BLOCO 2: Setup
+      // BLOCO 2
       {
         time: '00:12 – 00:25',
         title: '🛠️ Setup: VS Code + Live Server',
         difficulty: 'fácil',
         description:
-          'Garantir que todos têm o VS Code instalado com a extensão Live Server. Criar a primeira pasta do projeto, abrir no VS Code e criar o arquivo index.html.',
+          'Todo mundo com VS Code + Live Server instalado. Criar a pasta do projeto, abrir no VS Code e criar o index.html.',
         teacherNotes: isRemote
           ? [
-              'Compartilhe sua tela no Zoom/Meet o tempo inteiro. Cada clique que você der, os alunos devem reproduzir.',
-              'Crie a pasta "meu-site" na Área de Trabalho. Arraste para o VS Code.',
-              'Crie index.html. Explique: "esse é o nome padrão que todo navegador procura."',
-              'Abra com Live Server e mostre a página em branco: "Essa tela branca é o seu site."',
-              'Peça ✅ no chat quando cada aluno tiver a página branca aberta. Conte até 10 mentalmente.',
-              'Se alguém travar: peça para compartilhar a tela do aluno ou mova para breakout room para ajudar 1:1.',
-              '🕐 Máximo 13 min. Se alguém ainda estiver instalando, peça para acompanhar pela sua tela enquanto termina.',
+              'Compartilhe tela o tempo todo. Cada clique que der, eles reproduzem no PC deles.',
+              'Crie a pasta "meu-site" na Área de Trabalho. Arraste pro VS Code.',
+              'Crie index.html. "Esse é o nome que todo navegador procura quando abre um site."',
+              'Abra com Live Server. Tela branca. "Essa tela branca já é o site de vocês. Vazio, mas real."',
+              'Peça ✅ no chat. Quem travar: breakout room ou peça pra compartilhar tela.',
+              '🕐 13 min no máximo.',
             ]
           : [
-              'Projete sua tela o tempo inteiro. Cada clique que você der, os alunos devem poder reproduzir.',
-              'Crie uma pasta chamada "meu-site" na Área de Trabalho. Demonstre arrastando a pasta para o VS Code.',
-              'Dentro do VS Code, crie o arquivo index.html. Explique: "esse é o nome padrão que todo navegador procura quando abre um site".',
-              'Digite apenas <!DOCTYPE html> e salve. Abra com Live Server (botão direito → "Open with Live Server") e mostre a página em branco no navegador.',
-              '"Essa tela branca é o seu site. Vazio por enquanto, mas já é um site real — rodando no seu computador."',
-              'Se algum aluno travar na instalação do VS Code, peça a um colega que já terminou para ajudar (peer learning).',
-              '🕐 Máximo 13 minutos. Se alguém ainda estiver instalando, peça para continuar enquanto acompanha do projetor.',
+              'Projete sua tela. Cada clique que der, eles reproduzem.',
+              'Crie pasta "meu-site" na Área de Trabalho. Arraste pro VS Code.',
+              'Crie index.html. "Esse é o nome que todo navegador procura quando abre um site."',
+              'Abra com Live Server (clique direito → Open with Live Server). "Essa tela branca já é o site de vocês."',
+              'Quem travar: pede pro colega do lado ajudar.',
+              '🕐 13 min no máximo. Quem ainda tiver instalando, pede pra acompanhar pelo projetor.',
             ],
         images: [
           {
             placeholder:
-              '📸 Screenshot do VS Code vazio com uma pasta "meu-site" aberta no explorer lateral',
+              '📸 VS Code com a pasta "meu-site" aberta',
             alt: 'VS Code com pasta do projeto aberta',
           },
           {
             placeholder:
-              '📸 Screenshot mostrando como abrir o Live Server (clique direito → "Open with Live Server")',
-            alt: 'Menu do VS Code mostrando a opção Open with Live Server',
+              '📸 Clique direito mostrando "Open with Live Server"',
+            alt: 'Menu do VS Code com opção Live Server',
           },
         ],
       },
 
-      // BLOCO 3: HTML com IA
+      // BLOCO 3
       {
         time: '00:25 – 00:47',
-        title: '📝 HTML com IA — O esqueleto da página',
+        title: '📝 HTML com IA: O esqueleto da página',
         difficulty: 'médio',
         description:
-          'Introduzir as tags essenciais: <html>, <head>, <body>, <h1>, <p>, <img>, <a>, <ul>. Em vez de digitar tudo na mão, os alunos pedem ao Gemini para gerar a estrutura inicial e depois modificam.',
+          'As tags principais: <html>, <head>, <body>, <h1>, <p>, <img>, <a>. Os alunos pedem pro Gemini gerar a estrutura inicial e depois modificam com seus dados.',
         teacherNotes: isRemote
           ? [
-              'ANTES de ir para a IA, ensine o conceito (3 min). Compartilhe um slide com a "árvore HTML" — caixa dentro de caixa.',
-              'Use a analogia de LEGO: "Cada tag é uma peça. O <h1> é a peça de título, o <p> é o bloco de texto."',
-              'Mostre 5 tags na tela compartilhada com resultado visual ao lado (split screen).',
-              'Agora abra o Gemini na tela compartilhada. Execute o prompt AO VIVO para a turma ver.',
-              'Pause e leia com eles: "O que vocês acham que cada linha faz?" Use o chat para respostas.',
-              'Peça para copiarem e colarem no VS Code. "Troquem pelo nome e texto de vocês. Quando terminar, manda ✅."',
-              'Os 3 erros mais comuns nessa fase: (1) colar fora do <body>, (2) esquecer Ctrl+S, (3) confundir aba Gemini com VS Code.',
-              'Se alguém travar: peça para compartilhar a tela ou use breakout room.',
-              'Ao final, TODO aluno deve ter uma página com seu nome no navegador. Verifique via chat.',
+              'Antes da IA, ensine o conceito (3 min). Compartilhe o diagrama da árvore HTML.',
+              'Analogia LEGO: "Cada tag é uma peça. <h1> é a peça de título. <p> é o bloco de texto."',
+              'Mostre 5 tags na tela com resultado visual ao lado (split screen).',
+              'Abra o Gemini ao vivo. Rode o prompt na frente deles.',
+              '"Vamos ler junto. O que vocês acham que cada linha faz?" Chat pra respostas.',
+              '"Copiem, colem no VS Code, troquem pelo nome de vocês. ✅ quando terminar."',
+              'Erros comuns: (1) colar fora do <body>, (2) esquecer Ctrl+S, (3) trocar aba.',
+              'No final: todo mundo tem que ter uma página com o nome dele no navegador.',
             ]
           : [
-              'ANTES de ir para a IA, ensine o conceito por 3 minutos. Desenhe no quadro ou mostre o slide: o HTML é uma "árvore" — uma caixa dentro da outra.',
-              'Use a analogia de LEGO: "Cada tag HTML é uma peça de LEGO. O <h1> é aquela peça grandona de título. O <p> é um bloco de texto. O <img> é a peça com uma foto colada."',
-              'Mostre 5 tags no projetor com o resultado visual ao lado (split screen entre código e navegador). Não passe de 5 tags.',
-              'Agora sim, vá para o Gemini. Projete o prompt sugerido e execute AO VIVO para os alunos verem.',
-              'Pause depois que o Gemini gerar o código: "Vamos ler isso juntos. O que vocês acham que cada linha faz?"',
-              'Peça para copiarem, colarem no VS Code e TROCAREM o nome e texto para os deles.',
-              'Circule pela sala. Os 3 erros mais comuns: (1) colar fora do <body>, (2) esquecer de salvar (Ctrl+S), (3) confundir aba Gemini com VS Code.',
-              'Ao final desse bloco, TODO aluno deve ter uma página com seu nome aparecendo no navegador.',
+              'Antes da IA, ensine o conceito (3 min). Mostre o diagrama: HTML é uma árvore, caixa dentro de caixa.',
+              'Analogia LEGO: "Cada tag é uma peça. <h1> é a grandona de título. <p> é o bloco de texto. <img> é a peça com foto colada."',
+              'Mostre 5 tags no projetor com resultado visual ao lado. Só 5.',
+              'Agora vai pro Gemini. Rode o prompt ao vivo no projetor.',
+              '"Vamos ler junto. O que vocês acham que cada linha faz?" Aponte pra 3-4 linhas.',
+              '"Copiem, colem no VS Code, troquem pelo nome de vocês."',
+              'Circule pela sala. Erros comuns: (1) colar fora do <body>, (2) esquecer Ctrl+S, (3) trocar aba.',
+              'No final: todo mundo tem que ter uma página com seu nome no navegador.',
             ],
         images: [
           {
             placeholder:
-              '📸 Diagrama "Anatomia de uma página HTML" — árvore <html> → <head> + <body> → tags internas',
+              '📸 Diagrama da anatomia de uma página HTML',
             alt: 'Diagrama visual da anatomia de uma página HTML',
+            src: htmlAnatomy,
           },
           {
             placeholder:
-              '📸 Screenshot split-screen: código HTML à esquerda, resultado renderizado no Chrome à direita',
+              '📸 Split-screen: código HTML + resultado no Chrome',
             alt: 'VS Code com HTML ao lado do resultado no navegador',
           },
           {
             placeholder:
-              '📸 Screenshot do Gemini gerando a estrutura HTML de uma página pessoal',
+              '📸 Gemini gerando o HTML de uma página pessoal',
             alt: 'Gemini respondendo um prompt de geração de código HTML',
           },
         ],
         aiTip:
-          'Prompt sugerido para o Gemini: "Crie o HTML de uma página de apresentação pessoal simples com meu nome, uma foto placeholder, um parágrafo sobre mim e três links de redes sociais. Use tags semânticas básicas." Copie, cole no VS Code e ajuste com seu nome real.',
+          'Prompt pro Gemini: "Cria o HTML de uma página de apresentação pessoal simples com meu nome, uma foto placeholder, um parágrafo sobre mim e três links de redes sociais." Copie, cole e ajuste os dados.',
       },
 
-      // BLOCO 4: CSS com IA
+      // BLOCO 4
       {
         time: '00:47 – 01:07',
-        title: '🎨 CSS com IA — Dando vida à página',
+        title: '🎨 CSS com IA: Dando vida à página',
         difficulty: 'médio',
         description:
-          'Criar o arquivo style.css, linká-lo ao HTML e explorar propriedades visuais: cores, fontes, espaçamentos, centralização, bordas arredondadas e fundo. Usar IA para sugerir paletas de cores e explicar propriedades.',
+          'Criar style.css, linkar no HTML e explorar: cores, fontes, espaçamento, centralização, bordas arredondadas. Usar IA pra sugerir paletas de cores.',
         teacherNotes: isRemote
           ? [
-              'Comece com o efeito WOW: "A página de vocês tá com cara de documento do Word. Agora vamos transformar num site DE VERDADE."',
-              'Na tela compartilhada: crie style.css, adicione o <link> no <head>. Salve e mostre que nada mudou.',
-              'Adicione body { background-color: #1a1a2e; color: white; } — salve e mostre a transformação. "Viram!?"',
+              '"A página de vocês tá com cara de documento do Word. Agora vamos transformar num site de verdade."',
+              'Tela compartilhada: crie style.css, coloque o <link> no <head>. Salve. Nada mudou.',
+              'body { background-color: #1a1a2e; color: white; } Salve. "Viram!?"',
               '"HTML é o esqueleto. CSS é a roupa, a maquiagem, o penteado."',
-              'Use o Gemini para gerar paleta de cores ao vivo na tela compartilhada.',
-              'Demonstre 5 propriedades CSS, uma por vez: (1) background-color, (2) color, (3) font-family, (4) text-align: center, (5) border-radius.',
-              '"Qual a cor favorita de vocês? Manda no chat! Agora pede pro Gemini criar uma paleta baseada nessa cor."',
-              '⚠️ Não ensine flexbox, grid ou media queries. Cores e fontes apenas.',
+              'Gemini ao vivo: peça uma paleta de cores. Mostre que a IA também serve pra design.',
+              '5 propriedades, uma por vez: background-color, color, font-family, text-align, border-radius.',
+              '"Cor favorita? Manda no chat! Agora pede pro Gemini uma paleta baseada nessa cor."',
+              '⚠️ Foco em cores e fontes. Flexbox, grid, media queries ficam pra outra aula.',
             ]
           : [
-              'Comece com o efeito WOW: "A página de vocês tá com cara de documento do Word, né? Agora vamos transformar num site DE VERDADE."',
-              'Demonstre no projetor: crie style.css, adicione o <link> no <head>. Salve e mostre que nada mudou.',
-              'Adicione body { background-color: #1a1a2e; color: white; } — salve e mostre a transformação instantânea. Os alunos vão reagir.',
-              '"HTML é o esqueleto. CSS é a roupa, a maquiagem, o penteado. Mesma página, visual totalmente diferente."',
-              'Use o Gemini na tela para gerar uma paleta de cores. Projete o prompt ao vivo.',
-              'Demonstre 5 propriedades CSS, uma por vez, salvando e mostrando: (1) background-color, (2) color, (3) font-family, (4) text-align: center, (5) border-radius.',
-              '"Qual é a cor favorita de vocês? Peça pro Gemini criar uma paleta baseada nessa cor."',
-              'Se sobrar tempo, mostre Google Fonts — como usar fonte diferente com @import.',
-              '⚠️ Não ensine flexbox, grid, media queries ou position. Cores e fontes apenas.',
+              '"A página de vocês tá com cara de documento do Word. Agora vamos transformar num site de verdade."',
+              'No projetor: crie style.css, coloque o <link> no <head>. Salve. Nada mudou.',
+              'body { background-color: #1a1a2e; color: white; } Salve e mostre a transformação. Reação garantida.',
+              '"HTML é o esqueleto. CSS é a roupa, a maquiagem, o penteado. Mesma página, visual completamente diferente."',
+              'Gemini ao vivo: peça uma paleta de cores. Mostre que a IA também serve pra design.',
+              '5 propriedades, uma por vez, salvando e mostrando: background-color, color, font-family, text-align, border-radius.',
+              '"Cor favorita? Pede pro Gemini criar uma paleta baseada nela."',
+              'Se sobrar tempo: Google Fonts. Como importar fonte diferente.',
+              '⚠️ Foco em cores e fontes. Flexbox, grid, media queries ficam pra outra aula.',
             ],
         images: [
           {
             placeholder:
-              '📸 Before/After: mesma página HTML, antes sem CSS (sem estilo) e depois com CSS (cores, fontes)',
+              '📸 Antes e depois de aplicar CSS',
             alt: 'Comparação visual antes e depois de aplicar CSS',
+            src: cssBeforeAfter,
           },
           {
             placeholder:
-              '📸 Screenshot do Gemini sugerindo uma paleta de cores com códigos hexadecimais',
-            alt: 'Gemini gerando uma paleta de cores para o aluno',
+              '📸 Gemini sugerindo paleta de cores',
+            alt: 'Gemini gerando uma paleta de cores',
           },
           {
             placeholder:
-              '📸 Cheat-sheet de 5 propriedades CSS essenciais (background-color, color, font-family, text-align, border-radius)',
-            alt: 'Cartão de referência visual de propriedades CSS',
+              '📸 Cheat-sheet das 5 propriedades CSS essenciais',
+            alt: 'Cartão de referência de propriedades CSS',
+            src: cssCheatsheet,
           },
         ],
         aiTip:
-          'Prompt sugerido: "Tenho uma página HTML de apresentação pessoal. Me sugira um esquema de cores moderno e bonito em CSS para um jovem de 16 anos que gosta de games. Me dê o código CSS pronto." Teste o resultado, ajuste as cores e peça variações.',
+          'Prompt: "Tenho uma página HTML de apresentação pessoal. Sugira um esquema de cores moderno pra um jovem de 16 anos que curte games. Me dá o código CSS pronto." Teste, ajuste e peça variações.',
       },
 
-      // BLOCO 5: Projeto livre
+      // BLOCO 5
       {
         time: '01:07 – 01:22',
-        title: '🚀 Projeto livre — Sua mini página pessoal',
+        title: '🚀 Projeto livre: Sua mini página',
         difficulty: 'desafiador',
         description: isRemote
-          ? 'Cada aluno customiza sua página à vontade: troca cores, adiciona seções novas, coloca uma foto real, cria links para suas redes. O professor fica disponível via chat e breakout rooms. Estímulo ao uso criativo da IA.'
-          : 'Cada aluno customiza sua página à vontade: troca cores, adiciona seções novas, coloca uma foto real, cria links para suas redes. Instrutor circula pela sala ajudando. Estímulo ao uso criativo da IA.',
+          ? 'Hora de personalizar: cores, seções novas, foto real, links. Professor disponível via chat e breakout rooms.'
+          : 'Hora de personalizar: cores, seções novas, foto real, links. Professor circula pela sala.',
         teacherNotes: isRemote
           ? [
-              'Este é o momento mais importante. Os alunos precisam de AUTONOMIA. Não ensine conceitos novos — só ajude.',
-              'Compartilhe um slide com "Ideias para melhorar sua página" e diga: "Escolham pelo menos 2."',
-              'Ideias: (1) Seção "Meus hobbies", (2) Foto de verdade, (3) Paleta favorita, (4) Link pro Instagram/TikTok, (5) Efeito hover, (6) Seção "Jogo favorito".',
-              'Fique de olho no chat. Responda dúvidas rapidamente. Se uma dúvida for complexa, mova o aluno para breakout room.',
-              'Se um aluno terminar rápido, desafie pelo chat privado: "Tenta pedir ao Gemini um modo escuro!"',
-              'Se alguém estiver frustrado: peça para compartilhar a tela e resolva junto.',
-              'Avise: "Galera, 5 minutos! Salvem tudo! Já vamos apresentar."',
-              '💡 "A IA é seu assistente, não seu cérebro. Quando ela gerar código, leia, entenda e modifique para ser SEU."',
+              'Momento mais importante. Dê AUTONOMIA. Só ajude.',
+              'Mostre o slide de ideias: "Escolham pelo menos 2 dessas."',
+              'Ideias: (1) Seção "Meus hobbies", (2) Foto real, (3) Paleta favorita, (4) Link pro Instagram/TikTok, (5) Efeito hover, (6) Seção "Jogo favorito".',
+              'De olho no chat. Dúvida complexa? Breakout room.',
+              'Aluno terminou rápido? Chat privado: "Tenta pedir modo escuro pro Gemini!"',
+              'Aluno frustrado? "Compartilha a tela que a gente resolve junto."',
+              '"Galera, 5 minutos! Salvem tudo!"',
+              '💡 "A IA é o assistente de vocês. Mas leiam o que ela gera, entendam e mudem pra ficar do jeito de vocês."',
             ]
           : [
-              'Este é o momento mais importante da aula. Os alunos precisam de AUTONOMIA. Não ensine conceitos novos — só ajude quando pedirem.',
-              'Projete na tela a lista de "Ideias para melhorar sua página" e diga: "Escolham pelo menos 2."',
-              'Ideias: (1) Seção "Meus hobbies" com lista, (2) Foto de verdade, (3) Paleta favorita, (4) Link pro Instagram/TikTok, (5) Efeito hover, (6) Seção "Jogo favorito".',
-              'Circule pela sala ativamente. Pergunte: "O que você está tentando fazer? Posso ajudar?"',
-              'Se um aluno terminar rápido, desafie: "Tenta pedir ao Gemini um modo escuro!" ou "Pede uma animação no título."',
-              'Se alguém estiver frustrado: sente do lado, descubra o problema e resolva junto.',
-              'Avise com 5 minutos de antecedência: "Último ajuste! Salvem tudo!"',
-              '💡 "A IA é seu assistente, não seu cérebro. Quando ela gerar código, leia, entenda e modifique para ser SEU."',
+              'Momento mais importante. Dê AUTONOMIA. Só ajude quando pedirem.',
+              'Projete a lista de ideias: "Escolham pelo menos 2."',
+              'Ideias: (1) Seção "Meus hobbies", (2) Foto real, (3) Paleta favorita, (4) Link pro Instagram/TikTok, (5) Efeito hover, (6) Seção "Jogo favorito".',
+              'Circule pela sala. "O que cê tá tentando fazer? Posso ajudar?"',
+              'Aluno terminou rápido? "Tenta pedir modo escuro pro Gemini!" ou "Pede uma animação no título."',
+              'Aluno frustrado? Senta do lado, acha o problema e resolve junto.',
+              '"Galera, 5 minutos! Salvem tudo!"',
+              '💡 "A IA é o assistente de vocês. Mas leiam o que ela gera, entendam e mudem pra ficar do jeito de vocês."',
             ],
         images: [
           {
             placeholder:
-              '📸 Slide "Ideias para melhorar sua página" — lista visual com ícones (🎨 Cores, 📸 Foto, 🔗 Links, ✨ Efeitos, 🎮 Jogos)',
-            alt: 'Slide com ideias de customização para os alunos',
+              '📸 Slide de ideias: 🎨 Cores · 📸 Foto · 🔗 Links · ✨ Efeitos · 🎮 Jogos',
+            alt: 'Slide com ideias de customização',
           },
         ],
         aiTip:
-          'Incentive prompts criativos: "Gemini, como faço um efeito onde meus links mudam de cor quando passo o mouse?" ou "Me ajuda a criar uma seção bonita para mostrar meu jogo favorito com imagem e descrição."',
+          'Prompts criativos: "Gemini, faz um efeito onde meus links mudam de cor quando passo o mouse" ou "Me ajuda a criar uma seção pro meu jogo favorito com imagem."',
       },
 
-      // BLOCO 6: Encerramento
+      // BLOCO 6
       {
         time: '01:22 – 01:30',
         title: '🏆 Apresentação + Encerramento',
         difficulty: 'fácil',
         description: isRemote
-          ? 'Cada aluno compartilha sua tela e mostra sua página por 30 segundos. Votação do site mais criativo via reações. Discussão no chat e encerramento.'
-          : 'Cada aluno abre sua página no Live Server e mostra rapidamente para a turma. Votação do site mais criativo. Discussão: o que aprendemos? O que foi mais difícil?',
+          ? 'Cada aluno compartilha a tela por 30 segundos. Votação do mais criativo por reações no chat.'
+          : 'Cada aluno mostra a página no Live Server. Votação rápida do mais criativo.',
         teacherNotes: isRemote
           ? [
-              'Peça voluntários: "Quem quer mostrar? Compartilha a tela!" Comece com quem você viu fazendo algo criativo.',
-              'Cada apresentação: 30 seg. "Mostra e diz o que mais curtiu."',
-              'Votação no chat: "Qual foi o mais criativo? Manda o nome da pessoa!" (engajamento positivo).',
-              'Perguntas de fechamento no chat ou com microfone aberto: "O que foi mais fácil? Mais difícil? O que acharam de usar IA?"',
-              'Compartilhe o slide de "Próximos passos" e diga: "Tudo que vocês fizeram pode ser publicado de graça com GitHub Pages."',
-              'Encerre: "Vocês criaram seu primeiro site. Isso É programação. E fizeram em 1h30 o que há 20 anos levaria semanas. 🚀"',
+              '"Quem quer mostrar? Compartilha a tela!" Comece por quem fez algo criativo.',
+              '30 seg cada. "Mostra e diz o que mais curtiu."',
+              'Votação por chat: "Qual o mais criativo? Manda o nome!"',
+              '"O que foi mais fácil? Mais difícil? O que acharam de usar IA?"',
+              'Slide de próximos passos. "Tudo isso pode ir pro ar de graça com GitHub Pages."',
+              '"Vocês criaram o primeiro site de vocês. Isso É programação. 🚀"',
             ]
           : [
-              'Peça voluntários primeiro. Se poucos levantarem a mão, comece com quem você viu fazendo algo criativo.',
-              'Cada apresentação: no máximo 30 seg. "Mostra e diz o que mais curtiu."',
-              'Votação rápida: "Qual foi o mais criativo? Levanta a mão." (engajamento positivo).',
-              'Perguntas de fechamento: (1) "O que foi mais fácil?" (2) "Mais difícil?" (3) "O que acharam de usar IA?"',
-              'Mostre os próximos passos no projetor e diga: "Tudo isso pode ser publicado de graça com GitHub Pages."',
-              'Encerre com energia: "Vocês criaram seu primeiro site. Isso É programação. E fizeram em 1h30 o que há 20 anos levaria semanas. 🚀"',
+              'Voluntários primeiro. Se ninguém levantar a mão, comece por quem fez algo legal.',
+              '30 seg cada. "Mostra e diz o que mais curtiu."',
+              '"Qual o mais criativo? Levanta a mão."',
+              '"O que foi mais fácil? Mais difícil? O que acharam de usar IA?"',
+              'Projetor: próximos passos. "Dá pra publicar de graça com GitHub Pages."',
+              '"Vocês criaram o primeiro site de vocês. Isso É programação. 🚀"',
             ],
         images: [
           {
             placeholder:
-              '📸 Slide "Próximos passos" com ícones e links: Curso em Vídeo, MDN Web Docs, FreeCodeCamp, GitHub Pages',
-            alt: 'Slide com recursos e próximos passos para os alunos',
+              '📸 Slide "Próximos passos": Curso em Vídeo, MDN, FreeCodeCamp, GitHub Pages',
+            alt: 'Slide com recursos e próximos passos',
           },
         ],
       },
     ],
 
-    // ─── EXERCÍCIOS PRÁTICOS (compartilhados) ──────────────────────────
+    // ─── EXERCÍCIOS ──────────────────────────────────────────────────
     exercises: [
-      'Peça ao Gemini: "Me faça uma página HTML de apresentação pessoal" — depois troque o nome, a foto e o texto pelo seu.',
-      'Modifique pelo menos 3 propriedades CSS para personalizar as cores e fontes da sua página.',
-      'Adicione uma seção "Meus hobbies" com uma lista (<ul>) de pelo menos 3 itens. Estilize com CSS.',
-      'Use o Gemini para perguntar: "Como faço para centralizar um texto em CSS?" — implemente e teste.',
-      'Desafio extra: adicione um botão que leva para o seu Instagram, TikTok ou YouTube usando <a>. Estilize com background-color e border-radius.',
-      'Desafio bônus: peça ao Gemini "Como faço uma animação de fade-in no meu título usando só CSS?" e implemente.',
+      'Pede pro Gemini: "Me faz uma página HTML de apresentação pessoal." Depois troca nome, foto e texto pelo seu.',
+      'Muda pelo menos 3 propriedades CSS: cores, fontes, o que quiser. Testa cada uma.',
+      'Cria uma seção "Meus hobbies" com uma lista (<ul>) de 3+ itens. Estiliza com CSS.',
+      'Pergunta pro Gemini: "Como centralizo um texto em CSS?" Implementa e testa.',
+      'Desafio: cria um botão que leva pro seu Instagram/TikTok usando <a>. Estiliza com background-color e border-radius.',
+      'Desafio bônus: pede pro Gemini uma animação de fade-in no título usando só CSS.',
     ],
 
-    // ─── TROUBLESHOOTING ──────────────────────────────────────────────
+    // ─── TROUBLESHOOTING ─────────────────────────────────────────────
     troubleshooting: [
       {
-        problem: 'O Live Server não aparece no menu de contexto (clique direito)',
+        problem: 'Live Server não aparece no clique direito',
         solution:
-          'Verifique se a extensão está instalada e habilitada. Reinicie o VS Code. Se ainda não aparecer, use Ctrl+Shift+P → "Live Server: Open".',
+          'Confere se a extensão tá instalada e ativada. Reinicia o VS Code. Se não rolar, Ctrl+Shift+P e digita "Live Server: Open".',
       },
       {
-        problem: 'As alterações no CSS não aparecem no navegador',
+        problem: 'Mudanças no CSS não aparecem no navegador',
         solution:
-          'Verifique se o <link rel="stylesheet" href="style.css"> está dentro do <head>. Confira o nome do arquivo (maiúsculas importam). Tente Ctrl+Shift+R para reload sem cache.',
+          'Confere se o <link rel="stylesheet" href="style.css"> tá dentro do <head> (e não no <body>). Verifica se o nome do arquivo tá igualzinho. Ctrl+Shift+R força reload.',
       },
       {
-        problem: 'A imagem não carrega (<img> aparece quebrada)',
+        problem: 'Imagem quebrada (ícone de foto com X)',
         solution:
-          'Confira se o arquivo está na mesma pasta que index.html. Verifique se o nome no src="" é idêntico (incluindo extensão).',
+          'O arquivo tem que tá na mesma pasta do index.html. Confere se o nome no src="" tá idêntico, incluindo .jpg/.png.',
       },
       {
-        problem: 'A página aparece toda "quebrada" ou sem formatação',
+        problem: 'Página toda bagunçada',
         solution:
-          'Provavelmente há uma tag não fechada. Cole o código no Gemini e pergunte: "Meu HTML está quebrado, pode encontrar o erro?"',
+          'Provavelmente tem tag sem fechar. Cola o código no Gemini e pergunta: "Meu HTML tá quebrado, acha o erro." A IA detecta rápido.',
       },
       {
-        problem: 'O Gemini gerou código que não funciona',
+        problem: 'Gemini gerou código que deu errado',
         solution:
-          'A IA nem sempre acerta de primeira. Diga ao Gemini: "Isso não funcionou — o erro é [descrição]. Me ajuda a corrigir." Ensinar a dar feedback para a IA é uma habilidade valiosa!',
+          'Normal, a IA não acerta sempre. Fala pro Gemini: "Não funcionou, o problema é [descreve]. Me ajuda a corrigir." Saber dar feedback pra IA é habilidade importante.',
       },
       ...(isRemote
         ? [
             {
-              problem: 'Áudio ou vídeo do aluno não funciona na videoconferência',
+              problem: 'Áudio/vídeo não funciona na call',
               solution:
-                'Peça para verificar as permissões do navegador (ícone de cadeado na barra de endereço). Tente recarregar a página. Se persistir, sugira sair e entrar novamente na sala. Como último recurso, o aluno pode participar só pelo chat.',
+                'Verifica permissões do navegador (cadeado na barra de endereço). Recarrega a página. Se continuar, sai e entra de novo. Último caso: participa pelo chat.',
             },
             {
-              problem: 'O aluno não consegue compartilhar a tela',
+              problem: 'Não consigo compartilhar tela',
               solution:
-                'No Zoom: botão "Compartilhar tela" na barra inferior. No Meet: botão "Apresentar agora". Se o navegador pedir permissão, clicar em "Permitir". Em Mac, pode ser necessário ativar em Preferências do Sistema → Segurança → Gravação de tela.',
+                'Zoom: botão "Compartilhar tela" embaixo. Meet: "Apresentar agora". Se pedir permissão, clica "Permitir". Mac pode precisar de ajuste em Configurações > Segurança.',
             },
             {
-              problem: 'Lag/travamentos na videoconferência',
+              problem: 'Travando/lagando na call',
               solution:
-                'Peça para desligar a câmera temporariamente (o áudio consome menos banda). Fechar abas/programas desnecessários. Se persistir, o aluno pode acompanhar pelo chat e compartilhar screenshots do progresso.',
+                'Desliga a câmera temporariamente. Fecha abas e programas extras. Se persistir, acompanha pelo chat e manda screenshots do progresso.',
             },
           ]
         : [
             {
-              problem: 'O aluno não consegue acessar o Gemini (bloqueio escolar/rede)',
+              problem: 'Gemini bloqueado na rede da escola',
               solution:
-                'Alterne para o ChatGPT (chat.openai.com) ou organize duplas. Em último caso, o professor projeta o Gemini e os alunos pedem prompts pela turma.',
+                'Tenta ChatGPT (chat.openai.com). Se também não rolar, faz dupla com alguém que tenha acesso, ou o professor projeta o Gemini e a turma pede os prompts.',
             },
           ]),
     ],
 
-    // ─── FAQ (compartilhado) ──────────────────────────────────────────
+    // ─── FAQ ─────────────────────────────────────────────────────────
     faq: [
       {
-        question: 'Preciso decorar todas essas tags HTML?',
+        question: 'Preciso decorar essas tags todas?',
         answer:
-          'Não! Ninguém decora. Nem profissionais. O importante é saber que existem, entender o conceito e saber onde procurar (Google, MDN, ou perguntar à IA). É como dirigir: você não monta o motor, mas sabe o que cada pedal faz.',
+          'Ninguém decora. Nem quem trabalha com isso todo dia. O lance é saber que existem e saber pesquisar (Google, MDN, ou perguntar pra IA). É tipo dirigir: você não sabe montar o motor, mas sabe o que cada pedal faz.',
       },
       {
-        question: 'A IA vai substituir os programadores?',
+        question: 'A IA vai substituir programador?',
         answer:
-          'A IA é uma ferramenta, não um substituto. A calculadora substituiu os matemáticos? Não — permitiu que fizessem coisas mais difíceis. Com IA, programadores fazem coisas melhores e mais rápido. Mas alguém precisa PENSAR no que criar. Esse alguém é você.',
+          'A IA é ferramenta. Calculadora substituiu matemático? Só permitiu que fizessem coisas mais pesadas. Com IA, dev faz coisa melhor e mais rápido. Mas alguém precisa pensar no que criar e checar se tá certo. Esse alguém é você.',
       },
       {
-        question: 'Posso criar qualquer site com HTML e CSS?',
+        question: 'Dá pra fazer qualquer site com HTML e CSS?',
         answer:
-          'A estrutura e a aparência, sim! Para interatividade (formulários, chat, jogos), você precisa de JavaScript — próximo passo natural.',
+          'Estrutura e visual, sim. Pra interatividade (formulário, chat, jogo) precisa de JavaScript. É o próximo passo natural depois dessa aula.',
       },
       {
-        question: 'Como coloco meu site na internet de verdade?',
+        question: 'Como boto meu site na internet de verdade?',
         answer:
-          'Serviços gratuitos como GitHub Pages, Netlify e Vercel publicam seu site para o mundo. Pergunte ao Gemini: "Como publicar um site HTML no GitHub Pages?"',
+          'GitHub Pages, Netlify e Vercel publicam de graça. Pergunta pro Gemini: "Como publicar um site HTML no GitHub Pages?" Ele te guia.',
       },
       {
-        question: 'E se eu quiser continuar aprendendo depois da aula?',
+        question: 'Quero continuar aprendendo, por onde?',
         answer:
-          'Canal "Curso em Vídeo" no YouTube (PT-BR, gratuito), freeCodeCamp.org (EN), e praticar fazendo projetos pessoais.',
+          'Canal "Curso em Vídeo" no YouTube (PT-BR, gratuito), freeCodeCamp.org, e o mais importante: fazer projetos. Quanto mais cria, mais aprende.',
       },
     ],
 
-    // ─── CRITÉRIOS DE AVALIAÇÃO (compartilhados) ──────────────────────
+    // ─── AVALIAÇÃO ───────────────────────────────────────────────────
     assessment: [
-      '✅ O aluno criou um arquivo index.html funcional com pelo menos 3 tags diferentes',
-      '✅ O aluno criou e linkou um arquivo style.css com pelo menos 3 propriedades customizadas',
-      '✅ O aluno utilizou a IA como assistente pelo menos 2 vezes durante a aula',
-      '✅ O aluno conseguiu explicar (em suas palavras) a diferença entre HTML e CSS',
-      '✅ O aluno personalizou a página com seu próprio conteúdo (nome, texto, cores)',
-      '⭐ Bônus: o aluno adicionou elementos extras (animações, seções, efeitos hover)',
+      '✅ Criou index.html com pelo menos 3 tags diferentes',
+      '✅ Criou e linkou style.css com pelo menos 3 propriedades',
+      '✅ Usou a IA como assistente pelo menos 2 vezes',
+      '✅ Conseguiu explicar a diferença entre HTML e CSS com suas palavras',
+      '✅ Personalizou a página com conteúdo próprio (nome, texto, cores)',
+      '⭐ Bônus: adicionou extras (animação, seções a mais, efeito hover)',
     ],
 
-    // ─── RECURSOS (compartilhados + extra remoto) ─────────────────────
+    // ─── RECURSOS ────────────────────────────────────────────────────
     resources: [
       {
-        title: 'MDN Web Docs — Referência HTML e CSS',
+        title: 'MDN Web Docs',
         url: 'https://developer.mozilla.org/pt-BR/',
         why: 'Documentação oficial da web, em português.',
       },
       {
-        title: 'Gemini — IA do Google (gratuito)',
+        title: 'Gemini',
         url: 'https://gemini.google.com/',
-        why: 'Ferramenta de IA usada na aula. Gratuita com conta Google.',
+        why: 'IA do Google, de graça.',
       },
       {
-        title: 'ChatGPT — IA da OpenAI',
+        title: 'ChatGPT',
         url: 'https://chat.openai.com/',
         why: 'Alternativa ao Gemini.',
       },
       {
-        title: 'VS Code — Editor de código',
+        title: 'VS Code',
         url: 'https://code.visualstudio.com/',
-        why: 'O editor de código gratuito mais usado no mundo.',
+        why: 'Editor de código mais usado no mundo.',
       },
       {
-        title: 'Curso em Vídeo — HTML e CSS (YouTube, PT-BR)',
+        title: 'Curso em Vídeo (YouTube)',
         url: 'https://www.youtube.com/@CursoemVideo',
-        why: 'Melhor curso gratuito de HTML/CSS para iniciantes em português.',
+        why: 'Melhor curso gratuito de HTML/CSS em português.',
       },
       {
-        title: 'freeCodeCamp — Cursos interativos',
+        title: 'freeCodeCamp',
         url: 'https://www.freecodecamp.org/',
-        why: 'Plataforma gratuita com exercícios práticos e certificação.',
+        why: 'Exercícios práticos e certificação de graça.',
       },
       {
-        title: 'ColorHunt — Paletas de cores',
+        title: 'ColorHunt',
         url: 'https://colorhunt.co/',
-        why: 'Inspiração de paletas para personalizar sites.',
+        why: 'Paletas de cores pra se inspirar.',
       },
     ],
 
-    // ─── MENSAGEM DE ENCERRAMENTO (compartilhada) ─────────────────────
+    // ─── ENCERRAMENTO ────────────────────────────────────────────────
     closingMessage:
-      'Vocês acabaram de dar o primeiro passo num universo gigante. Tudo que existe na internet — cada rede social, cada jogo online, cada loja — foi construído com as mesmas ferramentas que vocês usaram hoje. A diferença entre vocês agora e um desenvolvedor profissional é só prática e tempo. Continuem criando, continuem perguntando à IA, e continuem curiosos. O próximo grande site pode ser de vocês. 🚀',
+      'Vocês acabaram de criar o primeiro site de vocês. Tudo que existe na internet, cada rede social, cada jogo, cada loja, foi feito com as mesmas ferramentas que vocês usaram agora. A diferença entre vocês e um dev profissional é prática e tempo. Continua criando, continua perguntando pra IA, continua curioso. O próximo site foda pode ser de vocês. 🚀',
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   Exportações: ambas as variantes e a variante presencial como padrão.
+   Exportações
    ═══════════════════════════════════════════════════════════════════════ */
 export const lessonPlanPresencial = createLessonPlan('presencial')
 export const lessonPlanDistancia = createLessonPlan('distancia')
