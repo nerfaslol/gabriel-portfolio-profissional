@@ -4,6 +4,10 @@ import slideAbertura from '@/assets/slide-abertura.png'
 import htmlAnatomy from '@/assets/html-anatomy.png'
 import cssBeforeAfter from '@/assets/css-before-after.png'
 import cssCheatsheet from '@/assets/css-cheatsheet.png'
+import vscodeFolder from '@/assets/vscode-folder.png'
+import geminiHtml from '@/assets/gemini-html.png'
+import colorPalette from '@/assets/color-palette.png'
+import nextSteps from '@/assets/next-steps.png'
 
 /* ═══════════════════════════════════════════════════════════════════════
    Factory que gera o plano de aula completo para cada modalidade.
@@ -213,11 +217,6 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
             alt: 'Slide de título da aula Web Design com IA',
             src: slideAbertura,
           },
-          {
-            placeholder:
-              '📸 Sites populares lado a lado: "Tudo isso é HTML + CSS"',
-            alt: 'Comparativo visual de sites populares feitos com HTML e CSS',
-          },
         ],
         aiTip:
           'Peça ao Gemini: "Explica o que é HTML em 3 linhas pra um aluno de 15 anos que nunca programou." Mostre na tela e pergunte: "Ficou claro? Concordam?"',
@@ -251,12 +250,8 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
           {
             placeholder:
               '📸 VS Code com a pasta "meu-site" aberta',
-            alt: 'VS Code com pasta do projeto aberta',
-          },
-          {
-            placeholder:
-              '📸 Clique direito mostrando "Open with Live Server"',
-            alt: 'Menu do VS Code com opção Live Server',
+            alt: 'Visualização da pasta do projeto no VS Code',
+            src: vscodeFolder,
           },
         ],
       },
@@ -298,13 +293,9 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
           },
           {
             placeholder:
-              '📸 Split-screen: código HTML + resultado no Chrome',
-            alt: 'VS Code com HTML ao lado do resultado no navegador',
-          },
-          {
-            placeholder:
               '📸 Gemini gerando o HTML de uma página pessoal',
-            alt: 'Gemini respondendo um prompt de geração de código HTML',
+            alt: 'IA gerando estrutura básica de um site',
+            src: geminiHtml,
           },
         ],
         aiTip:
@@ -350,7 +341,8 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
           {
             placeholder:
               '📸 Gemini sugerindo paleta de cores',
-            alt: 'Gemini gerando uma paleta de cores',
+            alt: 'Paleta de cores moderna sugerida por IA',
+            src: colorPalette,
           },
           {
             placeholder:
@@ -396,7 +388,7 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
           {
             placeholder:
               '📸 Slide de ideias: 🎨 Cores · 📸 Foto · 🔗 Links · ✨ Efeitos · 🎮 Jogos',
-            alt: 'Slide com ideias de customização',
+            alt: 'Sugestões de customização para o site',
           },
         ],
         aiTip:
@@ -432,7 +424,8 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
           {
             placeholder:
               '📸 Slide "Próximos passos": Curso em Vídeo, MDN, FreeCodeCamp, GitHub Pages',
-            alt: 'Slide com recursos e próximos passos',
+            alt: 'Finalização e recursos para continuar estudos',
+            src: nextSteps,
           },
         ],
       },
@@ -539,6 +532,8 @@ function createLessonPlan(modality: LessonModality): LessonPlan {
       '✅ Conseguiu explicar a diferença entre HTML e CSS com suas palavras',
       '✅ Personalizou a página com conteúdo próprio (nome, texto, cores)',
       '⭐ Bônus: adicionou extras (animação, seções a mais, efeito hover)',
+      '🚀 Capricho: o site parece algo que você realmente usaria?',
+      '📚 Documentação: comentou o que o código faz?',
     ],
 
     // ─── RECURSOS ────────────────────────────────────────────────────

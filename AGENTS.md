@@ -1,67 +1,47 @@
 # AGENTS.md
 
-## Stack e entrypoints
+## Comandos
 
-- App única em **Vite 8 + React 19 + TypeScript 6 + Tailwind CSS v4 + shadcn/ui**.
-- O projeto já está estruturado como um portfólio funcional, não mais como scaffold inicial.
-- Entrypoint real: `src/main.tsx` -> `src/App.tsx`.
-- Composição principal atual em `src/App.tsx`: `ThemeProvider` + `ThemeToggle` + `ProjectList`.
-- Alias `@/*` aponta para `src/*`; preserve `vite.config.ts`, `tsconfig.json` e `tsconfig.app.json` alinhados ao mexer nisso.
-
-## Arquitetura funcional
-
-- O catálogo de projetos é orientado a dados em `src/data/projects.ts`.
-- O contrato público dos itens do portfólio está em `src/types/project.ts` via interface `Project`.
-- A listagem é renderizada por `ProjectList` e cada item individual por `ProjectCard`.
-- Ao adicionar ou editar projetos, prefira atualizar os dados em `src/data/projects.ts` em vez de embutir conteúdo diretamente nos componentes.
-
-## Tema e UX
-
-- O app suporta `light`, `dark` e `system`.
-- A preferência de tema é persistida em `localStorage` com a chave `nerfas-theme`.
-- `ThemeProvider` controla a classe aplicada no `documentElement`; preserve essa convenção ao alterar o sistema de tema.
-
-## Comandos verificados
-
-- Instalar deps: `npm install`
+- Instalação e CI usam `npm install` (não `npm ci`).
 - Dev: `npm run dev`
-- Lint: `npm run lint`
-- Build de validação: `npm run build`
-- Preview local: `npm run preview`
-- Não há suite de testes configurada hoje.
+- Verificação mínima antes de concluir: `npm run lint && npm run build`
+- Formatação: `npm run format` / `npm run format:check`
+- Não há testes configurados.
 
-## GitHub Pages
+## Entrypoints e fluxo real
 
-- Deploy automático via `.github/workflows/deploy.yml` em push para `main`.
-- O workflow usa Node 22, `npm install`, `npm run build` e publica `./dist`.
-- O `base` em `vite.config.ts` é dinâmico por `mode`: `/` em desenvolvimento e `/gabriel-portfolio-profissional/` em produção.
-- Se renomear o repositório do GitHub Pages, atualize esse `base` de produção, senão os assets quebram em produção.
-- O workflow usa `npm install` (não `npm ci`); não troque sem garantir que `package-lock.json` esteja sincronizado.
+- Entrypoint: `src/main.tsx` -> `src/App.tsx`.
+- `App.tsx` usa `ThemeProvider` + `HashRouter`.
+- Rotas atuais: `/` -> `PortfolioPage`, `/aula` -> `LessonPlanPage`.
+- O uso de `HashRouter` é intencional para GitHub Pages; não troque por `BrowserRouter` sem ajustar o deploy.
 
-## shadcn / Tailwind / estilos
+## Conteúdo orientado a dados
 
-- Configuração do shadcn está em `components.json`; aliases esperados: `@/components`, `@/components/ui`, `@/lib`, `@/hooks`.
-- `@/hooks` continua configurado no shadcn, mas hoje não existe no código; não assuma a pasta como disponível sem criar ou ajustar a configuração.
-- Estilos globais e tokens ficam em `src/index.css`; esse arquivo já concentra imports de `tailwindcss`, `tw-animate-css`, `shadcn/tailwind.css` e `@fontsource-variable/geist`.
-- O tema visual usa variáveis CSS e tokens em OKLCH para modos claro/escuro; evite substituir `src/index.css` por CSS simplificado de template.
-- Utilitário compartilhado de classes: `src/lib/utils.ts` (`cn`).
+- Cards normais do portfólio vêm de `src/data/projects.ts` e seguem `src/types/project.ts`.
+- O card principal “Plano de Aula” não vem de `projects.ts`; ele usa `lessonPlan` de `src/data/lesson-plan.ts` dentro de `ProjectList`.
+- A página `/aula` alterna entre `lessonPlanPresencial` e `lessonPlanDistancia`, ambos gerados pela factory `createLessonPlan()` em `src/data/lesson-plan.ts`.
+- Para mudar conteúdo de projetos/aula, prefira editar os arquivos de `src/data/*` em vez de embutir texto nos componentes.
 
-## Dependências e componentes relevantes
+## Tema, estilos e UI
 
-- Dependências de UI já adotadas no projeto incluem `@base-ui/react`, `lucide-react`, `tw-animate-css`, `@fontsource-variable/geist` e `shadcn`.
-- O app já possui componentes base em `src/components/ui` e componentes de domínio em `src/components/portfolio`.
-- Preserve a separação entre dados (`src/data`), tipos (`src/types`), componentes de domínio e primitives de UI.
+- Tema suportado: `light | dark | system`; a preferência é salva em `localStorage` com a chave `nerfas-theme`.
+- `ThemeProvider` aplica a classe no `document.documentElement`; preserve essa convenção.
+- Tailwind v4 é configurado direto em `src/index.css`; não existe `tailwind.config.*`.
+- `src/index.css` concentra imports do Tailwind, `tw-animate-css`, `shadcn/tailwind.css`, fonte Geist e tokens OKLCH do tema; evite substituir por CSS de template.
+- Componentes base ficam em `src/components/ui`; componentes de domínio ficam em `src/components/portfolio`.
+- O projeto usa `@base-ui/react` + `cn()` (`src/lib/utils.ts`) nos primitives.
 
+## Aliases e geração de componentes
 
-## Higiene do repositório
+- O alias `@/*` precisa permanecer alinhado entre `vite.config.ts`, `tsconfig.json` e `tsconfig.app.json`.
+- `components.json` aponta `hooks` para `@/hooks`, mas essa pasta não existe hoje; se gerar componentes via shadcn, ajuste isso ou crie a pasta.
 
-- `node_modules/` e `dist/` podem existir localmente durante o desenvolvimento.
-- `dist/` não está versionado; não dependa de artefatos gerados no repositório para mudanças de código ou revisão.
-- O `README.md` ainda está no texto padrão do template Vite e pode não refletir o estado atual do projeto.
+## Deploy
 
-## Convenções úteis
+- Deploy automático em `.github/workflows/deploy.yml` roda em push para `main` com Node 22, `npm install` e `npm run build`, publicando `dist/` no GitHub Pages.
+- `vite.config.ts` usa `base: '/gabriel-portfolio-profissional/'` em produção e `/` fora dela; se o nome do repositório Pages mudar, atualize esse `base`.
 
-- Prefira mudanças pequenas e incrementais, mantendo o foco no portfólio já existente.
-- Para novos cards ou ajustes de conteúdo, comece por `src/data/projects.ts`.
-- Ao evoluir a UI, preserve a estrutura atual com `ThemeProvider`, `ThemeToggle` e seção de projetos orientada a dados.
-- Antes de concluir mudanças, validar com `npm run lint` e `npm run build`.
+## Fontes de verdade
+
+- `README.md` ainda é o padrão do template Vite e não descreve o app atual.
+- `CLAUDE.md` tem contexto adicional útil sobre scripts e convenções; preserve o que continuar verificável no código.
