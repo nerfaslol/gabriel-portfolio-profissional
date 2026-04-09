@@ -52,9 +52,6 @@
 - O app já possui componentes base em `src/components/ui` e componentes de domínio em `src/components/portfolio`.
 - Preserve a separação entre dados (`src/data`), tipos (`src/types`), componentes de domínio e primitives de UI.
 
-## Quirks do TypeScript
-
-- `tsconfig.app.json` mantém `ignoreDeprecations: "6.0"` por causa de `baseUrl`; não remova sem ajustar a estratégia de alias.
 
 ## Higiene do repositório
 
